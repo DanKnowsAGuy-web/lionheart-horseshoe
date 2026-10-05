@@ -6,6 +6,8 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Horseshoe Indianapolis Energy Savings | LionHeart Critical Power Services in partnership with Energy+</title>
 <meta name="description" content="An energy savings proposal for Horseshoe Indianapolis. Prepared by LionHeart Critical Power Services in partnership with Energy+.">
+<link rel="preload" as="image" href="assets/img/hero-casino.webp" type="image/webp" media="(min-width:821px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/hero-casino-mobile.webp" type="image/webp" media="(max-width:820px)" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -60,15 +62,42 @@
     .prepared{font-size:13px;letter-spacing:.1em;text-align:right;flex-shrink:0}
   }
 
-  /* ---------- hero: the 24 hour dial ---------- */
-  .hero{background:var(--navy);color:#fff;padding:clamp(48px,8vw,104px) 0}
-  .hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(28px,5vw,64px);align-items:center}
-  .hero h1{font-size:clamp(2.3rem,5.4vw,4rem);line-height:1.06;max-width:20ch;color:#fff}
+  /* ---------- hero: photo that lights up with scroll (--p 0 to 1) ---------- */
+  .hero{--p:.5;position:relative;background:var(--navy);color:#fff}
+  .hero-stage{position:relative;overflow:hidden;min-height:clamp(520px,78vh,720px);display:flex;align-items:center;padding:clamp(48px,8vw,104px) 0;isolation:isolate}
+  .hero-bg,.hero-tint,.hero-bokeh,.hero-scrim{position:absolute;inset:0}
+  .hero-bg{display:block;z-index:-4}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 50%;display:block;
+    filter:brightness(calc(.35 + .55 * var(--p))) saturate(calc(.15 + .95 * var(--p)))}
+  .hero-tint{z-index:-3;background:#0d2a70;opacity:calc(.62 - .5 * var(--p))}
+  .hero-bokeh{z-index:-2;overflow:hidden;mix-blend-mode:screen;opacity:calc(.22 + .78 * var(--p));filter:saturate(calc(.35 + 1.1 * var(--p)))}
+  .bk{position:absolute;border-radius:50%;filter:blur(3px)}
+  @media (prefers-reduced-motion:no-preference){.bk{animation:bkDrift var(--dur,60s) ease-in-out infinite alternate}}
+  @keyframes bkDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(var(--dx,24px),var(--dy,-18px),0)}}
+  .hero-scrim{z-index:-1;background:
+    linear-gradient(90deg,rgba(7,22,66,.86) 0,rgba(7,22,66,.74) 42%,rgba(7,22,66,.3) 78%,rgba(7,22,66,.12) 100%),
+    linear-gradient(0deg,rgba(7,22,66,.6) 0,rgba(7,22,66,0) 40%)}
+  .hero-grid{display:block;width:100%}
+  .hero-text{max-width:760px;opacity:calc(1 - .15 * max(0, (var(--p) - .8) * 5));transform:translateY(calc(-26px * max(0, (var(--p) - .8) * 5)))}
+  .hero h1{font-size:clamp(2.3rem,5.4vw,4rem);line-height:1.06;max-width:20ch;color:#fff;text-shadow:0 1px 14px rgba(7,22,66,.55)}
   .hero h1 em{font-style:normal;color:var(--amber)}
-  .hero .lead{margin-top:clamp(22px,3.2vw,34px);font-size:clamp(1.15rem,2.1vw,1.38rem);line-height:1.55;color:#fff;max-width:52ch}
+  .hero .lead{margin-top:clamp(22px,3.2vw,34px);font-size:clamp(1.15rem,2.1vw,1.38rem);line-height:1.55;color:#fff;max-width:52ch;text-shadow:0 1px 10px rgba(7,22,66,.6)}
   .hero .addressee{margin-bottom:22px;font-family:var(--disp);font-weight:600;font-size:17px;letter-spacing:.16em;text-transform:uppercase;color:#cfdbf2}
   .hero .addressee::after{content:"";display:block;width:64px;height:4px;background:var(--amber);margin-top:14px}
-  .dial{width:100%;max-width:430px;height:auto;display:block;margin:0 auto}
+  /* desktop: scroll-linked sticky stage, only when JS can drive --p */
+  @media (min-width:821px) and (prefers-reduced-motion:no-preference){
+    .js .hero{height:180vh}
+    .js .hero-stage{position:sticky;top:0;height:100vh;min-height:0;padding:0}
+  }
+  @media (prefers-reduced-motion:reduce){.hero{--p:.7}}
+
+  /* the 24 hour dial, now beside the problem intro */
+  .problem-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,300px);gap:clamp(24px,5vw,64px);align-items:center;margin-bottom:clamp(8px,2vw,16px)}
+  .dial-panel{background:var(--navy);padding:clamp(16px,2.4vw,24px);position:relative}
+  .dial-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--amber)}
+  .js .dial-panel:not(.in) .h,.js .dial-panel:not(.in) .d-hand{animation:none}
+  @media (max-width:820px){.problem-top{grid-template-columns:1fr}.dial-panel{max-width:300px}}
+  .dial{width:100%;max-width:260px;height:auto;display:block;margin:0 auto}
   .dial .tk{stroke:rgba(255,255,255,.4);stroke-width:2}
   .dial .tk.maj{stroke:#fff;stroke-width:3}
   .dial .h{fill:none;stroke:var(--amber);stroke-width:16}
@@ -83,10 +112,6 @@
   }
   @keyframes hourOn{from{opacity:.1}to{opacity:1}}
   @keyframes handSweep{to{transform:rotate(360deg)}}
-  @media (max-width:820px){
-    .hero-grid{grid-template-columns:1fr}
-    .dial{max-width:300px}
-  }
 
   /* full bleed illustrated bands (custom SVG) */
   .band{margin:0;background:var(--navy);color:#fff;padding:clamp(28px,5vw,52px) 0 clamp(22px,4vw,34px)}
@@ -378,72 +403,27 @@
   </div>
 </header>
 
-<!-- 1 : HERO -->
-<div class="hero">
-  <div class="wrap hero-grid">
+<!-- 1 : HERO
+  Hero photo: "A blurry photo of neon lights in a dark room" by Liam Shaw, Unsplash License
+  (free to use, no attribution required). https://unsplash.com/photos/a-blurry-photo-of-neon-lights-in-a-dark-room-0fS1QTrfjYc
+-->
+<div class="hero" id="hero">
+  <div class="hero-stage">
+    <picture class="hero-bg" aria-hidden="true">
+      <source media="(max-width:820px)" srcset="assets/img/hero-casino-mobile.webp" type="image/webp">
+      <source srcset="assets/img/hero-casino.webp" type="image/webp">
+      <img src="assets/img/hero-casino.jpg" alt="" width="2000" height="1333" decoding="async" fetchpriority="high">
+    </picture>
+    <div class="hero-tint" aria-hidden="true"></div>
+    <div class="hero-bokeh" id="bokeh" aria-hidden="true"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
     <div class="hero-text">
       <p class="addressee rv">For the Horseshoe Indianapolis property team &middot; October 2026</p>
       <h1 class="rv">A building that never closes has <em>no off-hours</em> to recover the cost of power.</h1>
       <p class="lead rv">Horseshoe Indianapolis runs 8,760 hours a year, four times the hours of an office, so every overspent kilowatt is paid for around the clock. We cut that cost while the floor, the air, and the power stay exactly as they are.</p>
     </div>
-    <svg class="dial" viewBox="0 0 400 400" role="img" aria-label="A dial of 24 hours with every hour lit. The building runs all day and all night.">
-      <line class="tk maj" x1="200.0" y1="34.0" x2="200.0" y2="10.0"/>
-      <line class="tk" x1="244.0" y1="35.8" x2="247.1" y2="24.2"/>
-      <line class="tk" x1="285.0" y1="52.8" x2="291.0" y2="42.4"/>
-      <line class="tk" x1="320.2" y1="79.8" x2="328.7" y2="71.3"/>
-      <line class="tk" x1="347.2" y1="115.0" x2="357.6" y2="109.0"/>
-      <line class="tk" x1="364.2" y1="156.0" x2="375.8" y2="152.9"/>
-      <line class="tk maj" x1="366.0" y1="200.0" x2="390.0" y2="200.0"/>
-      <line class="tk" x1="364.2" y1="244.0" x2="375.8" y2="247.1"/>
-      <line class="tk" x1="347.2" y1="285.0" x2="357.6" y2="291.0"/>
-      <line class="tk" x1="320.2" y1="320.2" x2="328.7" y2="328.7"/>
-      <line class="tk" x1="285.0" y1="347.2" x2="291.0" y2="357.6"/>
-      <line class="tk" x1="244.0" y1="364.2" x2="247.1" y2="375.8"/>
-      <line class="tk maj" x1="200.0" y1="366.0" x2="200.0" y2="390.0"/>
-      <line class="tk" x1="156.0" y1="364.2" x2="152.9" y2="375.8"/>
-      <line class="tk" x1="115.0" y1="347.2" x2="109.0" y2="357.6"/>
-      <line class="tk" x1="79.8" y1="320.2" x2="71.3" y2="328.7"/>
-      <line class="tk" x1="52.8" y1="285.0" x2="42.4" y2="291.0"/>
-      <line class="tk" x1="35.8" y1="244.0" x2="24.2" y2="247.1"/>
-      <line class="tk maj" x1="34.0" y1="200.0" x2="10.0" y2="200.0"/>
-      <line class="tk" x1="35.8" y1="156.0" x2="24.2" y2="152.9"/>
-      <line class="tk" x1="52.8" y1="115.0" x2="42.4" y2="109.0"/>
-      <line class="tk" x1="79.8" y1="79.8" x2="71.3" y2="71.3"/>
-      <line class="tk" x1="115.0" y1="52.8" x2="109.0" y2="42.4"/>
-      <line class="tk" x1="156.0" y1="35.8" x2="152.9" y2="24.2"/>
-      <path class="h" style="--i:0" d="M202.6 50.0 A150 150 0 0 1 236.3 54.5"/>
-      <path class="h" style="--i:1" d="M241.3 55.8 A150 150 0 0 1 272.7 68.8"/>
-      <path class="h" style="--i:2" d="M277.3 71.4 A150 150 0 0 1 304.2 92.1"/>
-      <path class="h" style="--i:3" d="M307.9 95.8 A150 150 0 0 1 328.6 122.7"/>
-      <path class="h" style="--i:4" d="M331.2 127.3 A150 150 0 0 1 344.2 158.7"/>
-      <path class="h" style="--i:5" d="M345.5 163.7 A150 150 0 0 1 350.0 197.4"/>
-      <path class="h" style="--i:6" d="M350.0 202.6 A150 150 0 0 1 345.5 236.3"/>
-      <path class="h" style="--i:7" d="M344.2 241.3 A150 150 0 0 1 331.2 272.7"/>
-      <path class="h" style="--i:8" d="M328.6 277.3 A150 150 0 0 1 307.9 304.2"/>
-      <path class="h" style="--i:9" d="M304.2 307.9 A150 150 0 0 1 277.3 328.6"/>
-      <path class="h" style="--i:10" d="M272.7 331.2 A150 150 0 0 1 241.3 344.2"/>
-      <path class="h" style="--i:11" d="M236.3 345.5 A150 150 0 0 1 202.6 350.0"/>
-      <path class="h" style="--i:12" d="M197.4 350.0 A150 150 0 0 1 163.7 345.5"/>
-      <path class="h" style="--i:13" d="M158.7 344.2 A150 150 0 0 1 127.3 331.2"/>
-      <path class="h" style="--i:14" d="M122.7 328.6 A150 150 0 0 1 95.8 307.9"/>
-      <path class="h" style="--i:15" d="M92.1 304.2 A150 150 0 0 1 71.4 277.3"/>
-      <path class="h" style="--i:16" d="M68.8 272.7 A150 150 0 0 1 55.8 241.3"/>
-      <path class="h" style="--i:17" d="M54.5 236.3 A150 150 0 0 1 50.0 202.6"/>
-      <path class="h" style="--i:18" d="M50.0 197.4 A150 150 0 0 1 54.5 163.7"/>
-      <path class="h" style="--i:19" d="M55.8 158.7 A150 150 0 0 1 68.8 127.3"/>
-      <path class="h" style="--i:20" d="M71.4 122.7 A150 150 0 0 1 92.1 95.8"/>
-      <path class="h" style="--i:21" d="M95.8 92.1 A150 150 0 0 1 122.7 71.4"/>
-      <path class="h" style="--i:22" d="M127.3 68.8 A150 150 0 0 1 158.7 55.8"/>
-      <path class="h" style="--i:23" d="M163.7 54.5 A150 150 0 0 1 197.4 50.0"/>
-      <text class="lbl" x="200" y="92" text-anchor="middle">MIDNIGHT</text>
-      <text class="lbl" x="296" y="206" text-anchor="end">6 AM</text>
-      <text class="lbl" x="200" y="322" text-anchor="middle">NOON</text>
-      <text class="lbl" x="104" y="206" text-anchor="start">6 PM</text>
-      <text class="d-big" x="200" y="226" text-anchor="middle"><tspan data-count="24">24</tspan></text>
-      <text class="d-sub" x="200" y="254" text-anchor="middle">HOURS A DAY</text>
-      <g class="d-hand"><circle cx="200" cy="50" r="9"/></g>
-    </svg>
-
+    </div>
   </div>
 </div>
 
@@ -451,9 +431,70 @@
 <section class="alt act">
   <div class="wrap">
     <div class="act-label rv"><span class="rule"></span><span>The problem</span></div>
-    <div class="prose">
-      <h2 class="rv">Every overspent kilowatt bills you three times.</h2>
-      <p class="lede rv">An office plant rests two thirds of the year. Yours does not rest at all.</p>
+    <div class="problem-top">
+      <div class="prose">
+        <h2 class="rv">Every overspent kilowatt bills you three times.</h2>
+        <p class="lede rv">An office plant rests two thirds of the year. Yours does not rest at all.</p>
+      </div>
+      <div class="dial-panel rv">
+    <svg class="dial" viewBox="0 0 400 400" role="img" aria-label="A dial of 24 hours with every hour lit. The building runs all day and all night.">
+          <line class="tk maj" x1="200.0" y1="34.0" x2="200.0" y2="10.0"/>
+          <line class="tk" x1="244.0" y1="35.8" x2="247.1" y2="24.2"/>
+          <line class="tk" x1="285.0" y1="52.8" x2="291.0" y2="42.4"/>
+          <line class="tk" x1="320.2" y1="79.8" x2="328.7" y2="71.3"/>
+          <line class="tk" x1="347.2" y1="115.0" x2="357.6" y2="109.0"/>
+          <line class="tk" x1="364.2" y1="156.0" x2="375.8" y2="152.9"/>
+          <line class="tk maj" x1="366.0" y1="200.0" x2="390.0" y2="200.0"/>
+          <line class="tk" x1="364.2" y1="244.0" x2="375.8" y2="247.1"/>
+          <line class="tk" x1="347.2" y1="285.0" x2="357.6" y2="291.0"/>
+          <line class="tk" x1="320.2" y1="320.2" x2="328.7" y2="328.7"/>
+          <line class="tk" x1="285.0" y1="347.2" x2="291.0" y2="357.6"/>
+          <line class="tk" x1="244.0" y1="364.2" x2="247.1" y2="375.8"/>
+          <line class="tk maj" x1="200.0" y1="366.0" x2="200.0" y2="390.0"/>
+          <line class="tk" x1="156.0" y1="364.2" x2="152.9" y2="375.8"/>
+          <line class="tk" x1="115.0" y1="347.2" x2="109.0" y2="357.6"/>
+          <line class="tk" x1="79.8" y1="320.2" x2="71.3" y2="328.7"/>
+          <line class="tk" x1="52.8" y1="285.0" x2="42.4" y2="291.0"/>
+          <line class="tk" x1="35.8" y1="244.0" x2="24.2" y2="247.1"/>
+          <line class="tk maj" x1="34.0" y1="200.0" x2="10.0" y2="200.0"/>
+          <line class="tk" x1="35.8" y1="156.0" x2="24.2" y2="152.9"/>
+          <line class="tk" x1="52.8" y1="115.0" x2="42.4" y2="109.0"/>
+          <line class="tk" x1="79.8" y1="79.8" x2="71.3" y2="71.3"/>
+          <line class="tk" x1="115.0" y1="52.8" x2="109.0" y2="42.4"/>
+          <line class="tk" x1="156.0" y1="35.8" x2="152.9" y2="24.2"/>
+          <path class="h" style="--i:0" d="M202.6 50.0 A150 150 0 0 1 236.3 54.5"/>
+          <path class="h" style="--i:1" d="M241.3 55.8 A150 150 0 0 1 272.7 68.8"/>
+          <path class="h" style="--i:2" d="M277.3 71.4 A150 150 0 0 1 304.2 92.1"/>
+          <path class="h" style="--i:3" d="M307.9 95.8 A150 150 0 0 1 328.6 122.7"/>
+          <path class="h" style="--i:4" d="M331.2 127.3 A150 150 0 0 1 344.2 158.7"/>
+          <path class="h" style="--i:5" d="M345.5 163.7 A150 150 0 0 1 350.0 197.4"/>
+          <path class="h" style="--i:6" d="M350.0 202.6 A150 150 0 0 1 345.5 236.3"/>
+          <path class="h" style="--i:7" d="M344.2 241.3 A150 150 0 0 1 331.2 272.7"/>
+          <path class="h" style="--i:8" d="M328.6 277.3 A150 150 0 0 1 307.9 304.2"/>
+          <path class="h" style="--i:9" d="M304.2 307.9 A150 150 0 0 1 277.3 328.6"/>
+          <path class="h" style="--i:10" d="M272.7 331.2 A150 150 0 0 1 241.3 344.2"/>
+          <path class="h" style="--i:11" d="M236.3 345.5 A150 150 0 0 1 202.6 350.0"/>
+          <path class="h" style="--i:12" d="M197.4 350.0 A150 150 0 0 1 163.7 345.5"/>
+          <path class="h" style="--i:13" d="M158.7 344.2 A150 150 0 0 1 127.3 331.2"/>
+          <path class="h" style="--i:14" d="M122.7 328.6 A150 150 0 0 1 95.8 307.9"/>
+          <path class="h" style="--i:15" d="M92.1 304.2 A150 150 0 0 1 71.4 277.3"/>
+          <path class="h" style="--i:16" d="M68.8 272.7 A150 150 0 0 1 55.8 241.3"/>
+          <path class="h" style="--i:17" d="M54.5 236.3 A150 150 0 0 1 50.0 202.6"/>
+          <path class="h" style="--i:18" d="M50.0 197.4 A150 150 0 0 1 54.5 163.7"/>
+          <path class="h" style="--i:19" d="M55.8 158.7 A150 150 0 0 1 68.8 127.3"/>
+          <path class="h" style="--i:20" d="M71.4 122.7 A150 150 0 0 1 92.1 95.8"/>
+          <path class="h" style="--i:21" d="M95.8 92.1 A150 150 0 0 1 122.7 71.4"/>
+          <path class="h" style="--i:22" d="M127.3 68.8 A150 150 0 0 1 158.7 55.8"/>
+          <path class="h" style="--i:23" d="M163.7 54.5 A150 150 0 0 1 197.4 50.0"/>
+          <text class="lbl" x="200" y="92" text-anchor="middle">MIDNIGHT</text>
+          <text class="lbl" x="296" y="206" text-anchor="end">6 AM</text>
+          <text class="lbl" x="200" y="322" text-anchor="middle">NOON</text>
+          <text class="lbl" x="104" y="206" text-anchor="start">6 PM</text>
+          <text class="d-big" x="200" y="226" text-anchor="middle"><tspan data-count="24">24</tspan></text>
+          <text class="d-sub" x="200" y="254" text-anchor="middle">HOURS A DAY</text>
+          <g class="d-hand"><circle cx="200" cy="50" r="9"/></g>
+        </svg>
+      </div>
     </div>
     <div class="triple">
       <div class="rv">
@@ -793,6 +834,36 @@
   document.documentElement.classList.add('js');
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i%6,4)*60)+'ms';io.observe(el)});
+
+  /* hero: scroll position drives --p (0 dark and gray, 1 lit and colour); bokeh is drawn in code */
+  (function(){
+    const hero=document.getElementById('hero'),bk=document.getElementById('bokeh');
+    if(!hero)return;
+    if(bk){
+      const C=['250,161,27','250,161,27','235,70,55','40,190,185','255,244,225','250,161,27','235,70,55','40,190,185'];
+      let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+      let h='';
+      for(let i=0;i<15;i++){
+        const sz=Math.round(70+rnd()*170),c=C[i%C.length];
+        h+='<span class="bk" style="left:'+(rnd()*100).toFixed(1)+'%;top:'+(rnd()*100).toFixed(1)+'%;width:'+sz+'px;height:'+sz+'px;'
+          +'background:radial-gradient(circle,rgba('+c+',.55) 0,rgba('+c+',.3) 38%,rgba('+c+',0) 70%);'
+          +'--dx:'+Math.round(rnd()*50-25)+'px;--dy:'+Math.round(rnd()*50-25)+'px;--dur:'+Math.round(45+rnd()*50)+'s"></span>';
+      }
+      bk.innerHTML=h;
+    }
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+    let raf=null;
+    const update=()=>{
+      raf=null;
+      const y=scrollY,top=hero.offsetTop,hh=hero.offsetHeight;
+      let p;
+      if(matchMedia('(min-width:821px)').matches)p=(y-top)/Math.max(1,hh-innerHeight);
+      else p=y/Math.max(1,(top+hh)*.85);
+      hero.style.setProperty('--p',Math.min(1,Math.max(0,p)).toFixed(3));
+    };
+    const sched=()=>{if(!raf)raf=requestAnimationFrame(update)};
+    addEventListener('scroll',sched,{passive:true});addEventListener('resize',sched);update();
+  })();
 
   /* contact: one constant, read everywhere */
   (function(){
