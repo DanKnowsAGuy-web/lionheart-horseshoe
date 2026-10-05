@@ -51,14 +51,14 @@
   header{padding:clamp(16px,2.6vw,24px) 0;border-bottom:1px solid var(--line);background:#fff}
   .header-row{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
   .lockup{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-  .lockup .lh{height:46px;width:auto;display:block}
+  .lockup .lh{height:72px;width:auto;display:block}
   .lockup .partner{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-weight:600;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);border-left:1px solid var(--line);padding-left:18px}
-  .lockup .partner img{height:22px;width:auto;display:block}
+  .lockup .partner img{height:16.3px;width:auto;display:block}
   .prepared{font-family:var(--disp);font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:700}
   @media (max-width:640px){
     header{padding:12px 0}
     .header-row{flex-wrap:nowrap;gap:12px;align-items:center}
-    .lockup .lh{height:34px}
+    .lockup .lh{height:36px}
     .lockup .partner{display:none}
     .prepared{font-size:13px;letter-spacing:.1em;text-align:right;flex-shrink:0}
   }
@@ -246,9 +246,10 @@
   .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
   .cta .who{margin-top:24px;color:#fff;font-size:18px}
   .cta .logos{margin-top:36px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-  .cta .logos img.lh{height:48px;width:auto;display:block}
+  .cta .logos img.lh{height:72px;width:auto;display:block}
   .cta .logos .sep{font-family:var(--disp);font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#cfdbf2;font-weight:600}
-  .cta .logos img.ep{height:24px;width:auto;display:block}
+  .cta .logos img.ep{height:16.3px;width:auto;display:block}
+  @media (max-width:640px){.cta .logos img.lh{height:56px}.cta .logos img.ep{height:12.7px}}
 
   footer{padding:32px 0 40px;background:#fff;border-top:1px solid var(--line)}
   footer p{font-size:15px;line-height:1.6;color:var(--mut);max-width:84ch}
@@ -951,14 +952,14 @@
   <div class="wrap">
     <div class="prose">
       <h2 class="rv">Planned low in every range.</h2>
-      <p class="rv">We have not seen a bill, so we estimated one from public benchmarks and planned low in every range. Move the sliders to see how the numbers change.</p>
+      <p class="rv">We have not seen a bill, so we estimated one from the building's major loads and planned low in every range. Move the sliders to see how the numbers change.</p>
     </div>
     <div class="equation rv" id="equation">
       <p class="eq-intro">What the three levers return</p>
       <div class="eq-controls">
         <div class="eq-ctl">
-          <label for="eqBill">Annual electric bill: <strong id="eqBillVal">$2.6M</strong></label>
-          <input type="range" id="eqBill" min="2.6" max="5.2" step="0.1" value="2.6" aria-label="Estimated annual electric bill, millions of dollars">
+          <label for="eqBill">Annual electric bill: <strong id="eqBillVal">$2.0M</strong></label>
+          <input type="range" id="eqBill" min="1.4" max="3.5" step="0.1" value="2.0" aria-label="Estimated annual electric bill, millions of dollars">
           <div class="eq-ends" aria-hidden="true"><span>Floor estimate</span><span>High estimate</span></div>
         </div>
         <div class="eq-ctl">
@@ -970,7 +971,7 @@
           <label for="eqPeak">Peak demand shaved by battery: <strong id="eqPeakVal">10%</strong></label>
           <input type="range" id="eqPeak" min="5" max="25" step="1" value="10" aria-label="Share of peak demand shaved by a battery, percent">
           <div class="eq-ends" aria-hidden="true"><span>Low</span><span>High</span></div>
-          <p class="eq-batt">Battery sized about <b id="mBattKw">370</b> kW / <b id="mBattKwh">1,500</b> kWh</p>
+          <p class="eq-batt">Battery sized about <b id="mBattKw">250</b> kW / <b id="mBattKwh">1,000</b> kWh</p>
         </div>
         <div class="eq-ctl">
           <label for="eqDist">Distortion correction: <strong id="eqDistVal">5%</strong></label>
@@ -981,26 +982,26 @@
       <div class="eq-rows" aria-live="polite">
         <div class="eq-row r-cool">
           <span class="k"><i class="sw sw-cool" aria-hidden="true"></i>Cooling</span>
-          <span class="m">HVAC and cooling is 40% of the bill, <span id="mHvac">$1,040,000</span>. Recovered at <span id="mPct">20</span>%.</span>
-          <b id="mHvacSave">$208,000</b>
+          <span class="m">HVAC and cooling is 40% of the bill, <span id="mHvac">$800,000</span>. Recovered at <span id="mPct">20</span>%.</span>
+          <b id="mHvacSave">$160,000</b>
         </div>
         <div class="eq-row r-peak">
           <span class="k"><i class="sw sw-peak" aria-hidden="true"></i>Peak shaving / storage</span>
-          <span class="m">Peak cut <span id="mPeakPct">10</span>%: <span id="mKw">370</span> kW &times; $22.57 &times; 12 months.</span>
-          <b id="mDem">$100,200</b>
+          <span class="m">Peak cut <span id="mPeakPct">10</span>%: <span id="mKw">250</span> kW &times; $22.57 &times; 12 months.</span>
+          <b id="mDem">$67,700</b>
         </div>
         <div class="eq-row r-dist">
           <span class="k"><i class="sw sw-dist" aria-hidden="true"></i>Distortion correction</span>
-          <span class="m"><span id="mDistPct">5</span>% of the <span id="mBill">$2,600,000</span> bill.</span>
-          <b id="mDist">$130,000</b>
+          <span class="m"><span id="mDistPct">5</span>% of the <span id="mBill">$2,000,000</span> bill.</span>
+          <b id="mDist">$100,000</b>
         </div>
       </div>
       <div class="eq-stack">
         <div class="eq-stack__cap">Where the savings come from</div>
         <div class="eq-stack__bar" id="eqStack" role="img" aria-label="Stacked bar of annual savings by lever">
-          <span id="sgCool" class="sw-cool" style="width:47.5%"></span>
-          <span id="sgPeak" class="sw-peak" style="width:22.9%"></span>
-          <span id="sgDist" class="sw-dist" style="width:29.7%"></span>
+          <span id="sgCool" class="sw-cool" style="width:48.83%"></span>
+          <span id="sgPeak" class="sw-peak" style="width:20.66%"></span>
+          <span id="sgDist" class="sw-dist" style="width:30.52%"></span>
         </div>
         <div class="eq-stack__lg" aria-hidden="true">
           <span><i class="sw sw-cool"></i>Cooling</span>
@@ -1010,20 +1011,20 @@
       </div>
       <div class="eq-visual">
         <div class="eq-val">
-          <span class="eq-big">$<span id="eqAnnual">438,200</span></span>
-          <span class="eq-label">back every year, <b id="mShare">16.9</b>% of the annual bill.</span>
+          <span class="eq-big">$<span id="eqAnnual">327,700</span></span>
+          <span class="eq-label">back every year, <b id="mShare">16.4</b>% of the annual bill.</span>
         </div>
         <div class="eq-val">
-          <span class="eq-big">$<span id="eqTen">4,382,000</span></span>
+          <span class="eq-big">$<span id="eqTen">3,277,000</span></span>
           <span class="eq-label">over ten years. Annual figure times ten, no escalation.</span>
         </div>
       </div>
-      <p class="eq-fine">Estimate built from industry benchmarks; your bills replace every assumption in step one.</p>
+      <p class="eq-fine">Estimate built bottom-up from the building's major loads; your bills replace every assumption in step one.</p>
       <details class="eq-how">
         <summary>How this estimate is built</summary>
         <ul>
-          <li>Bill and cooling: an assumed 100 to 200 kWh per square foot across 233,000 square feet at 7.0 cents per kWh, with cooling taken as 40 percent of the bill, a published industry estimate we have not verified.</li>
-          <li>Demand rate: a stand-in Indiana tariff of $22.57 per kW per month, applied to an assumed 3,700 to 7,300 kW peak.</li>
+          <li>Bill and cooling: built bottom-up from the building's major loads (slot machines, the cooling plant, air handling, lighting, and kitchens) at Indiana commercial rates, about 11 to 13 cents per kWh all in, with cooling taken as 40 percent of the bill, a published industry estimate we have not verified.</li>
+          <li>Demand rate: a stand-in Indiana tariff of $22.57 per kW per month, applied to an assumed peak of about 1,750 to 4,375 kW, in proportion to the bill.</li>
           <li>The battery shaving range of 5 to 25 percent reflects a 24/7 load with a narrow evening peak.</li>
           <li>The distortion range of 3 to 14 percent of the bill is anchored by the two proof results above, 8.6 and 14 percent.</li>
           <li>The three levers overlap somewhat, so the defaults sit low. Your bills replace every assumption in step one.</li>
@@ -1112,7 +1113,7 @@
 
 <footer>
   <div class="wrap">
-    <p class="fine">Technology results shown are results achieved by the technologies we deploy at the sites named or documented in the studies cited, under their own conditions; they are not predictions for any specific property. Regional programs aggregate hundreds of additional sites into the 200 plus total. Savings figures in the technology record are stated as a share of the HVAC and cooling portion of a facility bill, not the whole bill. Estimates on this page use public benchmarks in place of your bills and are replaced by them. Distortion correction benefits, including the maintenance and equipment life ranges, are stated as up to figures and are confirmed at your site. Tax credit availability is as of October 2026; confirm with tax counsel.</p>
+    <p class="fine">Technology results shown are results achieved by the technologies we deploy at the sites named or documented in the studies cited, under their own conditions; they are not predictions for any specific property. Regional programs aggregate hundreds of additional sites into the 200 plus total. Savings figures in the technology record are stated as a share of the HVAC and cooling portion of a facility bill, not the whole bill. Estimates on this page are built from the building's major loads in place of your bills and are replaced by them. Distortion correction benefits, including the maintenance and equipment life ranges, are stated as up to figures and are confirmed at your site. Tax credit availability is as of October 2026; confirm with tax counsel.</p>
     <p class="fine">Sources: building size, opening, and slot count from Wikipedia and GGB News; ventilation guidance from ASHRAE 62.1 and industry casino design guidance; LionHeart service descriptions from lionheartpower.com.</p>
     <p class="fine">Prepared by LionHeart Critical Power Services in partnership with Energy+. Private and confidential, prepared for Horseshoe Indianapolis.</p>
   </div>
@@ -1188,7 +1189,7 @@
       const b=parseFloat(bill.value),p=parseInt(pct.value,10),sp=parseInt(peakS.value,10),sd=parseInt(distS.value,10);
       const billD=Math.round(b*1e6);
       const hvac=billD*HVAC_SHARE,hvacSave=r100(hvac*p/100);
-      const peak=3700+(b-2.6)/2.6*3600;
+      const peak=b*1250;
       const kw=Math.round(peak*sp/100);
       const dem=r100(kw*RATE*12);
       const dist=r100(billD*sd/100);
