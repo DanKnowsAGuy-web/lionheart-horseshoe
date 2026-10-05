@@ -173,16 +173,6 @@
   .cell-back strong{color:var(--blue)}
   .h2-flip{color:var(--blue)}
 
-  /* prescription list */
-  .levers{margin-top:clamp(28px,4vw,42px);display:flex;flex-direction:column}
-  .lever{display:grid;grid-template-columns:minmax(190px,260px) 1fr;gap:clamp(16px,3vw,40px);padding:clamp(20px,3vw,26px) 0;border-top:1px solid var(--line)}
-  .lever:last-child{border-bottom:1px solid var(--line)}
-  .lever .name{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--ink);font-size:1.3rem;line-height:1.2}
-  .lever p{font-size:1.02rem;color:var(--body-c);max-width:58ch}
-  @media (max-width:640px){.lever{grid-template-columns:1fr;gap:8px}}
-  .lever{transition:background .3s var(--ease)}
-  .lever:hover{background:rgba(15,76,145,.04)}
-
   /* outlined callout */
   .combined{margin-top:clamp(30px,5vw,46px);padding:clamp(24px,4vw,38px);border:3px solid var(--blue);background:#fff}
   .combined h3{font-size:clamp(1.4rem,3vw,2rem);line-height:1.12;max-width:30ch;margin-bottom:14px}
@@ -418,10 +408,54 @@
   }
   @keyframes bNeedle{from{transform:rotate(14deg)}to{transform:rotate(44deg)}}
   @media (max-width:820px){.bridge{grid-template-columns:1fr}}
-  .proofline{margin-top:clamp(26px,4vw,40px);padding:clamp(18px,3vw,26px) clamp(18px,3vw,30px);border-left:6px solid var(--amber);background:var(--bg-alt);display:flex;gap:clamp(16px,3vw,32px);align-items:center;flex-wrap:wrap}
-  .proofline .big{font-family:var(--mono);font-weight:600;font-size:clamp(2.4rem,5.4vw,3.6rem);color:var(--blue);line-height:1;white-space:nowrap}
-  .proofline p{flex:1 1 280px;font-size:1.12rem;line-height:1.5;color:var(--body-c);max-width:62ch;margin:0}
-  .proofline p strong{color:var(--ink)}
+  .proofs{margin-top:clamp(26px,4vw,40px)}
+  .proofs__head{display:block;font-family:var(--disp);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:clamp(1.15rem,2.2vw,1.4rem);color:var(--ink);margin-bottom:14px}
+  .proofs__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2.4vw,24px)}
+  .pcard{border-top:4px solid var(--amber);background:var(--bg-alt);padding:clamp(18px,3vw,28px)}
+  .pcard .big{display:block;font-family:var(--disp);font-weight:700;font-size:clamp(3rem,6.4vw,4.4rem);letter-spacing:-.01em;word-spacing:0;color:var(--blue);line-height:1;white-space:nowrap}
+  .pcard .big small{font-size:.38em;letter-spacing:.06em;margin-left:.35em;color:var(--mut);text-transform:uppercase}
+  .pcard h4{margin-top:12px;font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:1.25rem;color:var(--ink);line-height:1.2}
+  .pcard p{margin-top:4px;font-size:1.02rem;line-height:1.45;color:var(--body-c)}
+  @media (max-width:640px){.proofs__grid{grid-template-columns:1fr}}
+
+  /* lever sequence */
+  .act.lever-sec{padding-top:clamp(30px,4.5vw,56px);padding-bottom:clamp(26px,4vw,44px)}
+  .lever-sec .act-label{margin-bottom:clamp(18px,3vw,28px)}
+  .act-label .lv{color:var(--blue)}
+  .tie{margin-top:clamp(22px,3.5vw,34px);font-size:1.15rem;line-height:1.5;color:var(--ink);font-weight:600;max-width:60ch}
+  .lever-line{font-size:1.15rem;line-height:1.55;max-width:50ch}
+  .lever-line + .lever-line{margin-top:.7em}
+  .lever-intro{font-size:1.15rem;line-height:1.5;max-width:44ch;margin:0 0 .8em;color:var(--ink);font-weight:600}
+  .peak__text h2,.bridge__text h2{margin-bottom:clamp(14px,2vw,20px)}
+  @media (max-width:640px){.lever-sec .triple > div{padding:18px 20px 28px}.lever-sec .cell-viz{margin:6px 0 0}.lever-sec .cell-viz svg{max-width:120px}.lever-sec .triple h3{margin:10px 0 6px}}
+
+  /* peak shaving */
+  .peak{margin-top:clamp(8px,2vw,14px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:clamp(24px,5vw,60px);align-items:center}
+  .peak__viz{background:var(--navy);padding:clamp(14px,2.4vw,24px);position:relative}
+  .peak__viz::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--amber)}
+  .ps-svg{width:100%;height:auto;display:block}
+  .ps-svg .ps-area{fill:rgba(255,255,255,.12)}
+  .ps-svg .ps-rech{fill:#cfdbf2;fill-opacity:.55}
+  .ps-svg .ps-amber{fill:var(--amber)}
+  .ps-svg .ps-orig{fill:none;stroke:var(--amber);stroke-width:3}
+  .ps-svg .ps-th{stroke:rgba(255,255,255,.7);stroke-width:2;stroke-dasharray:8 6}
+  .ps-svg .ps-line{fill:none;stroke:#fff;stroke-width:5;stroke-linejoin:round}
+  .ps-svg .ps-ax{stroke:rgba(255,255,255,.35);stroke-width:1.5}
+  .ps-svg .ps-dot{fill:var(--amber);stroke:#fff;stroke-width:2}
+  .ps-svg .ps-t{font-family:var(--disp);font-weight:700;font-size:27px;letter-spacing:.06em;fill:#fff}
+  .ps-svg .ps-t-amber{fill:var(--amber)}
+  .ps-svg .ps-ax-t{font-family:var(--disp);font-weight:600;font-size:23px;letter-spacing:.06em;fill:#cfdbf2}
+  @media (prefers-reduced-motion:no-preference){
+    .js .peak__viz .ps-line{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.8s var(--ease) .2s}
+    .js .peak__viz.in .ps-line{stroke-dashoffset:0}
+    .js .peak__viz .ps-amber{opacity:0;transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(.2);transition:opacity .8s ease 1.7s,transform .9s var(--ease) 1.7s}
+    .js .peak__viz.in .ps-amber{opacity:1;transform:none}
+    .js .peak__viz .ps-orig,.js .peak__viz .ps-dot,.js .peak__viz .ps-t-amber{opacity:0;transition:opacity .6s ease 2.3s}
+    .js .peak__viz.in .ps-orig,.js .peak__viz.in .ps-dot,.js .peak__viz.in .ps-t-amber{opacity:1}
+    .js .peak__viz .ps-rech{opacity:0;transition:opacity .8s ease 2.6s}
+    .js .peak__viz.in .ps-rech{opacity:.55}
+  }
+  @media (max-width:820px){.peak{grid-template-columns:1fr}}
 
   /* cool feature and film */
   .coolfeat{margin-top:clamp(22px,3.5vw,34px);padding:clamp(22px,3.5vw,34px);background:#fff;border:1px solid var(--line);border-top:4px solid var(--amber)}
@@ -601,6 +635,7 @@
         <p>At 8,760 hours a year, a chiller reaches in about four years the run hours an office unit reaches in about seventeen. Replacement costs more with every cycle.</p>
       </div>
     </div>
+    <p class="tie rv">Three levers answer these in order: cooling for the meter, peak shaving for the demand charge, distortion correction for equipment life.</p>
   </div>
 </section>
 
@@ -618,17 +653,75 @@
   </div>
 </figure>
 
-<!-- 3 : ENERGY DISTORTION -->
-<section class="act">
+<!-- 3 : LEVER 1, COOLING -->
+<section class="alt act lever-sec">
   <div class="wrap">
-    <div class="act-label rv"><span class="rule"></span><span>Energy distortion</span></div>
-    <div class="prose">
-      <h2 class="rv">Your floor sends distortion back into the building's power.</h2>
+    <div class="act-label rv"><span class="rule"></span><span><span class="lv">Lever 1</span> &middot; Cooling, the largest overspend</span></div>
+      <div class="coolfeat rv">
+        <h3>Heating and cooling can be half your bill. We start there.</h3>
+        <p>Your chillers and air handlers run every hour of the year, so cooling is the first place the savings are.</p>
+        <p>A smoking floor requires outside air. We match it to the crowd and hold air quality.</p>
+        <p class="coolfeat__q">Watch the whole method in six minutes.</p>
+        <div class="film-inline">
+          <button type="button" class="film-inline__facade" data-film-inline aria-label="Play the six minute method film">
+            <img src="assets/img/film-cover.jpg" alt="" loading="lazy" width="1280" height="720">
+            <span class="film-inline__scrim" aria-hidden="true"></span>
+            <span class="film-inline__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="film-inline__meta" aria-hidden="true">The method &middot; 6 min</span>
+          </button>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- 4 : LEVER 2, PEAK DEMAND -->
+<section class="act lever-sec">
+  <div class="wrap">
+    <div class="act-label rv"><span class="rule"></span><span><span class="lv">Lever 2</span> &middot; Peak demand</span></div>
+    <div class="peak">
+      <div class="peak__text rv">
+        <h2>A battery takes the peak off the meter.</h2>
+        <p class="lever-line">One quarter hour sets the demand charge for the whole month.</p>
+        <p class="lever-line">A battery covers that peak, so the meter never sees it.</p>
+        <p class="lever-line">The same battery stands behind the generators LionHeart already maintains, so the floor stays powered.</p>
+        <p class="quiet">The federal storage tax credit and utility incentives are tailwinds where they apply.</p>
+      </div>
+      <div class="peak__viz rv">
+        <svg class="ps-svg" viewBox="0 0 760 400" role="img" aria-label="A casino's electric load over 24 hours with one evening peak. The part of the peak above a threshold line is shaded amber: a battery supplies it, so the meter never sees it. The battery recharges overnight, when the load is low. One peak sets the demand charge for the month.">
+          <path class="ps-area" d="M30.0 300.0 L32.9 300.0 L35.8 300.0 L38.8 300.0 L41.7 300.0 L44.6 299.9 L47.5 299.9 L50.4 299.9 L53.3 299.9 L56.2 299.9 L59.2 299.9 L62.1 299.9 L65.0 299.9 L67.9 299.9 L70.8 299.9 L73.8 299.9 L76.7 299.8 L79.6 299.8 L82.5 299.8 L85.4 299.8 L88.3 299.8 L91.2 299.8 L94.2 299.7 L97.1 299.7 L100.0 299.7 L102.9 299.7 L105.8 299.6 L108.8 299.6 L111.7 299.6 L114.6 299.5 L117.5 299.5 L120.4 299.4 L123.3 299.4 L126.2 299.4 L129.2 299.3 L132.1 299.2 L135.0 299.2 L137.9 299.1 L140.8 299.1 L143.8 299.0 L146.7 298.9 L149.6 298.8 L152.5 298.7 L155.4 298.6 L158.3 298.5 L161.2 298.4 L164.2 298.3 L167.1 298.2 L170.0 298.1 L172.9 298.0 L175.8 297.8 L178.7 297.7 L181.7 297.5 L184.6 297.4 L187.5 297.2 L190.4 297.0 L193.3 296.9 L196.2 296.7 L199.2 296.5 L202.1 296.3 L205.0 296.1 L207.9 295.8 L210.8 295.6 L213.8 295.4 L216.7 295.1 L219.6 294.8 L222.5 294.6 L225.4 294.3 L228.3 294.0 L231.2 293.7 L234.2 293.4 L237.1 293.0 L240.0 292.7 L242.9 292.4 L245.8 292.0 L248.8 291.7 L251.7 291.3 L254.6 290.9 L257.5 290.5 L260.4 290.1 L263.3 289.7 L266.2 289.3 L269.2 288.9 L272.1 288.4 L275.0 288.0 L277.9 287.5 L280.8 287.1 L283.8 286.6 L286.7 286.2 L289.6 285.7 L292.5 285.2 L295.4 284.8 L298.3 284.3 L301.3 283.8 L304.2 283.3 L307.1 282.8 L310.0 282.4 L312.9 281.9 L315.8 281.4 L318.8 280.9 L321.7 280.5 L324.6 280.0 L327.5 279.5 L330.4 279.1 L333.3 278.6 L336.2 278.2 L339.2 277.8 L342.1 277.3 L345.0 276.9 L347.9 276.5 L350.8 276.1 L353.8 275.7 L356.7 275.4 L359.6 275.0 L362.5 274.7 L365.4 274.4 L368.3 274.1 L371.2 273.8 L374.2 273.5 L377.1 273.2 L380.0 273.0 L382.9 272.8 L385.8 272.5 L388.8 272.3 L391.7 272.2 L394.6 272.0 L397.5 271.8 L400.4 271.7 L403.3 271.5 L406.2 271.4 L409.2 271.3 L412.1 271.1 L415.0 271.0 L417.9 270.9 L420.8 270.7 L423.8 270.5 L426.7 270.4 L429.6 270.2 L432.5 269.9 L435.4 269.7 L438.3 269.3 L441.2 269.0 L444.2 268.5 L447.1 268.0 L450.0 267.5 L452.9 266.8 L455.8 266.1 L458.8 265.2 L461.7 264.2 L464.6 263.1 L467.5 261.9 L470.4 260.5 L473.3 259.0 L476.2 257.3 L479.2 255.4 L482.1 253.4 L485.0 251.1 L487.9 248.7 L490.8 246.1 L493.8 243.3 L496.7 240.3 L499.6 237.1 L502.5 233.7 L505.4 230.2 L508.3 226.4 L511.2 222.5 L514.2 222.0 L517.1 222.0 L520.0 222.0 L522.9 222.0 L525.8 222.0 L528.8 222.0 L531.7 222.0 L534.6 222.0 L537.5 222.0 L540.4 222.0 L543.3 222.0 L546.2 222.0 L549.2 222.0 L552.1 222.0 L555.0 222.0 L557.9 222.0 L560.8 222.0 L563.8 222.0 L566.7 222.0 L569.6 222.0 L572.5 222.0 L575.4 222.0 L578.3 222.0 L581.2 222.0 L584.2 222.0 L587.1 222.0 L590.0 222.0 L592.9 222.0 L595.8 222.0 L598.8 222.0 L601.7 222.0 L604.6 222.0 L607.5 222.0 L610.4 222.0 L613.3 222.0 L616.3 222.0 L619.2 222.0 L622.1 222.0 L625.0 222.0 L627.9 222.0 L630.8 222.0 L633.8 222.0 L636.7 222.0 L639.6 222.0 L642.5 222.0 L645.4 222.0 L648.3 223.8 L651.2 228.7 L654.2 233.5 L657.1 238.1 L660.0 242.6 L662.9 246.9 L665.8 251.1 L668.7 255.0 L671.7 258.8 L674.6 262.3 L677.5 265.6 L680.4 268.8 L683.3 271.7 L686.2 274.4 L689.2 277.0 L692.1 279.3 L695.0 281.4 L697.9 283.4 L700.8 285.2 L703.8 286.9 L706.7 288.4 L709.6 289.7 L712.5 291.0 L715.4 292.1 L718.3 293.0 L721.2 293.9 L724.2 294.7 L727.1 295.4 L730.0 296.0 L730.0 340 L30.0 340 Z"/>
+          <path class="ps-rech" d="M53.3 258.0 L56.8 258.0 L60.3 258.0 L63.8 258.0 L67.3 258.0 L70.8 258.0 L74.3 258.0 L77.8 258.0 L81.3 258.0 L84.8 258.0 L88.3 258.0 L91.8 258.0 L95.3 258.0 L98.8 258.0 L102.3 258.0 L105.8 258.0 L109.3 258.0 L112.8 258.0 L116.3 258.0 L119.8 258.0 L123.3 258.0 L126.8 258.0 L130.3 258.0 L133.8 258.0 L137.3 258.0 L140.8 258.0 L144.3 258.0 L147.8 258.0 L151.3 258.0 L154.8 258.0 L158.3 258.0 L161.8 258.0 L165.3 258.0 L168.8 258.0 L172.3 258.0 L175.8 258.0 L179.3 258.0 L182.8 258.0 L186.3 258.0 L189.8 258.0 L193.3 258.0 L193.3 296.9 L189.8 297.1 L186.3 297.3 L182.8 297.5 L179.3 297.7 L175.8 297.8 L172.3 298.0 L168.8 298.1 L165.3 298.3 L161.8 298.4 L158.3 298.5 L154.8 298.7 L151.3 298.8 L147.8 298.9 L144.3 299.0 L140.8 299.1 L137.3 299.1 L133.8 299.2 L130.3 299.3 L126.8 299.3 L123.3 299.4 L119.8 299.5 L116.3 299.5 L112.8 299.5 L109.3 299.6 L105.8 299.6 L102.3 299.7 L98.8 299.7 L95.3 299.7 L91.8 299.8 L88.3 299.8 L84.8 299.8 L81.3 299.8 L77.8 299.8 L74.3 299.9 L70.8 299.9 L67.3 299.9 L63.8 299.9 L60.3 299.9 L56.8 299.9 L53.3 299.9 Z"/>
+          <path class="ps-amber" d="M511.6 222.0 L514.2 218.5 L517.1 214.3 L520.0 210.0 L522.9 205.6 L525.8 201.1 L528.8 196.6 L531.7 192.1 L534.6 187.5 L537.5 183.0 L540.4 178.6 L543.3 174.2 L546.2 170.1 L549.2 166.0 L552.1 162.2 L555.0 158.6 L557.9 155.3 L560.8 152.2 L563.8 149.5 L566.7 147.2 L569.6 145.2 L572.5 143.6 L575.4 142.4 L578.3 141.6 L581.2 141.3 L584.2 141.4 L587.1 141.9 L590.0 142.9 L592.9 144.3 L595.8 146.1 L598.8 148.4 L601.7 151.0 L604.6 154.0 L607.5 157.3 L610.4 161.0 L613.3 165.0 L616.3 169.2 L619.2 173.6 L622.1 178.3 L625.0 183.1 L627.9 188.1 L630.8 193.1 L633.8 198.3 L636.7 203.4 L639.6 208.6 L642.5 213.7 L645.4 218.8 L647.3 222.0 Z"/>
+          <path class="ps-orig" d="M511.6 222.0 L514.2 218.5 L517.1 214.3 L520.0 210.0 L522.9 205.6 L525.8 201.1 L528.8 196.6 L531.7 192.1 L534.6 187.5 L537.5 183.0 L540.4 178.6 L543.3 174.2 L546.2 170.1 L549.2 166.0 L552.1 162.2 L555.0 158.6 L557.9 155.3 L560.8 152.2 L563.8 149.5 L566.7 147.2 L569.6 145.2 L572.5 143.6 L575.4 142.4 L578.3 141.6 L581.2 141.3 L584.2 141.4 L587.1 141.9 L590.0 142.9 L592.9 144.3 L595.8 146.1 L598.8 148.4 L601.7 151.0 L604.6 154.0 L607.5 157.3 L610.4 161.0 L613.3 165.0 L616.3 169.2 L619.2 173.6 L622.1 178.3 L625.0 183.1 L627.9 188.1 L630.8 193.1 L633.8 198.3 L636.7 203.4 L639.6 208.6 L642.5 213.7 L645.4 218.8 L647.3 222.0"/>
+          <line class="ps-th" x1="30" y1="222" x2="730.0" y2="222"/>
+          <path class="ps-line" pathLength="1" d="M30.0 300.0 L32.9 300.0 L35.8 300.0 L38.8 300.0 L41.7 300.0 L44.6 299.9 L47.5 299.9 L50.4 299.9 L53.3 299.9 L56.2 299.9 L59.2 299.9 L62.1 299.9 L65.0 299.9 L67.9 299.9 L70.8 299.9 L73.8 299.9 L76.7 299.8 L79.6 299.8 L82.5 299.8 L85.4 299.8 L88.3 299.8 L91.2 299.8 L94.2 299.7 L97.1 299.7 L100.0 299.7 L102.9 299.7 L105.8 299.6 L108.8 299.6 L111.7 299.6 L114.6 299.5 L117.5 299.5 L120.4 299.4 L123.3 299.4 L126.2 299.4 L129.2 299.3 L132.1 299.2 L135.0 299.2 L137.9 299.1 L140.8 299.1 L143.8 299.0 L146.7 298.9 L149.6 298.8 L152.5 298.7 L155.4 298.6 L158.3 298.5 L161.2 298.4 L164.2 298.3 L167.1 298.2 L170.0 298.1 L172.9 298.0 L175.8 297.8 L178.7 297.7 L181.7 297.5 L184.6 297.4 L187.5 297.2 L190.4 297.0 L193.3 296.9 L196.2 296.7 L199.2 296.5 L202.1 296.3 L205.0 296.1 L207.9 295.8 L210.8 295.6 L213.8 295.4 L216.7 295.1 L219.6 294.8 L222.5 294.6 L225.4 294.3 L228.3 294.0 L231.2 293.7 L234.2 293.4 L237.1 293.0 L240.0 292.7 L242.9 292.4 L245.8 292.0 L248.8 291.7 L251.7 291.3 L254.6 290.9 L257.5 290.5 L260.4 290.1 L263.3 289.7 L266.2 289.3 L269.2 288.9 L272.1 288.4 L275.0 288.0 L277.9 287.5 L280.8 287.1 L283.8 286.6 L286.7 286.2 L289.6 285.7 L292.5 285.2 L295.4 284.8 L298.3 284.3 L301.3 283.8 L304.2 283.3 L307.1 282.8 L310.0 282.4 L312.9 281.9 L315.8 281.4 L318.8 280.9 L321.7 280.5 L324.6 280.0 L327.5 279.5 L330.4 279.1 L333.3 278.6 L336.2 278.2 L339.2 277.8 L342.1 277.3 L345.0 276.9 L347.9 276.5 L350.8 276.1 L353.8 275.7 L356.7 275.4 L359.6 275.0 L362.5 274.7 L365.4 274.4 L368.3 274.1 L371.2 273.8 L374.2 273.5 L377.1 273.2 L380.0 273.0 L382.9 272.8 L385.8 272.5 L388.8 272.3 L391.7 272.2 L394.6 272.0 L397.5 271.8 L400.4 271.7 L403.3 271.5 L406.2 271.4 L409.2 271.3 L412.1 271.1 L415.0 271.0 L417.9 270.9 L420.8 270.7 L423.8 270.5 L426.7 270.4 L429.6 270.2 L432.5 269.9 L435.4 269.7 L438.3 269.3 L441.2 269.0 L444.2 268.5 L447.1 268.0 L450.0 267.5 L452.9 266.8 L455.8 266.1 L458.8 265.2 L461.7 264.2 L464.6 263.1 L467.5 261.9 L470.4 260.5 L473.3 259.0 L476.2 257.3 L479.2 255.4 L482.1 253.4 L485.0 251.1 L487.9 248.7 L490.8 246.1 L493.8 243.3 L496.7 240.3 L499.6 237.1 L502.5 233.7 L505.4 230.2 L508.3 226.4 L511.2 222.5 L514.2 222.0 L517.1 222.0 L520.0 222.0 L522.9 222.0 L525.8 222.0 L528.8 222.0 L531.7 222.0 L534.6 222.0 L537.5 222.0 L540.4 222.0 L543.3 222.0 L546.2 222.0 L549.2 222.0 L552.1 222.0 L555.0 222.0 L557.9 222.0 L560.8 222.0 L563.8 222.0 L566.7 222.0 L569.6 222.0 L572.5 222.0 L575.4 222.0 L578.3 222.0 L581.2 222.0 L584.2 222.0 L587.1 222.0 L590.0 222.0 L592.9 222.0 L595.8 222.0 L598.8 222.0 L601.7 222.0 L604.6 222.0 L607.5 222.0 L610.4 222.0 L613.3 222.0 L616.3 222.0 L619.2 222.0 L622.1 222.0 L625.0 222.0 L627.9 222.0 L630.8 222.0 L633.8 222.0 L636.7 222.0 L639.6 222.0 L642.5 222.0 L645.4 222.0 L648.3 223.8 L651.2 228.7 L654.2 233.5 L657.1 238.1 L660.0 242.6 L662.9 246.9 L665.8 251.1 L668.7 255.0 L671.7 258.8 L674.6 262.3 L677.5 265.6 L680.4 268.8 L683.3 271.7 L686.2 274.4 L689.2 277.0 L692.1 279.3 L695.0 281.4 L697.9 283.4 L700.8 285.2 L703.8 286.9 L706.7 288.4 L709.6 289.7 L712.5 291.0 L715.4 292.1 L718.3 293.0 L721.2 293.9 L724.2 294.7 L727.1 295.4 L730.0 296.0"/>
+          <line class="ps-ax" x1="30" y1="340" x2="730.0" y2="340"/>
+          <circle class="ps-dot" cx="584.2" cy="141.4" r="6"/>
+          <text class="ps-t ps-t-amber" x="730.0" y="112" text-anchor="end">ONE PEAK SETS THE DEMAND CHARGE</text>
+          <text class="ps-t" x="30" y="210">METER CEILING</text>
+          <rect x="30" y="14" width="22" height="22" fill="#faa11b"/>
+          <text class="ps-t" x="64" y="33">BATTERY COVERS THE PEAK</text>
+          <rect x="30" y="50" width="22" height="22" fill="#cfdbf2" fill-opacity=".55"/>
+          <text class="ps-t" x="64" y="69">BATTERY RECHARGES OVERNIGHT</text>
+          <text class="ps-ax-t" x="30" y="378">MIDNIGHT</text>
+          <text class="ps-ax-t" x="205.0" y="378" text-anchor="middle">6 AM</text>
+          <text class="ps-ax-t" x="380.0" y="378" text-anchor="middle">NOON</text>
+          <text class="ps-ax-t" x="555.0" y="378" text-anchor="middle">6 PM</text>
+          <text class="ps-ax-t" x="730.0" y="378" text-anchor="end">MIDNIGHT</text>
+        </svg>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- 5 : LEVER 3, ENERGY DISTORTION -->
+<section class="alt act lever-sec">
+  <div class="wrap">
+    <div class="act-label rv"><span class="rule"></span><span><span class="lv">Lever 3</span> &middot; Energy distortion, which does more than the bill</span></div>
     <div class="bridge">
       <div class="bridge__text rv">
+        <h2>Your floor sends distortion back into the building's power.</h2>
+        <p class="lever-intro">Unlike the first two levers, this one lowers the bill, cuts maintenance, and extends equipment life.</p>
         <p>More than 1,500 slot machines, plus variable speed drives, LED drivers, and UPS units, draw current in distorted pulses instead of a smooth wave.</p>
-        <p>The building pays for that extra current, but it does no useful work. It leaves as heat and losses in the wiring, transformers, and motors, and it raises the demand the utility bills.</p>
       </div>
       <div class="bridge__viz rv">
         <svg class="bridge-svg" viewBox="0 0 560 320" role="img" aria-label="A clean current wave beside a distorted current wave. The extra area of the distorted wave is shaded amber: current the building pays for that does no work. It feeds a meter reading high.">
@@ -656,9 +749,20 @@
         </svg>
       </div>
     </div>
-    <div class="proofline rv">
-      <span class="big">8.6%</span>
-      <p><strong>Las Vegas Hotel &amp; Casino cut its electrical demand 8.6 percent by correcting distortion alone</strong>, independently metered. It came from resolving that one issue by itself.</p>
+    <div class="proofs rv">
+      <span class="proofs__head">Distortion correction alone, nothing else changed:</span>
+      <div class="proofs__grid">
+        <div class="pcard">
+          <span class="big">14%<small>kWh</small></span>
+          <h4>Caribe Resort, Orange Beach, AL</h4>
+          <p>Verified 12-month monthly average.</p>
+        </div>
+        <div class="pcard">
+          <span class="big">8.6%<small>kW demand</small></span>
+          <h4>Las Vegas Hotel &amp; Casino</h4>
+          <p>Independent panel metering.</p>
+        </div>
+      </div>
     </div>
     <span class="tag-k rv" style="margin-top:clamp(28px,4vw,40px)">Where distortion lands</span>
     <div class="triple" style="margin-top:14px">
@@ -671,7 +775,7 @@
           <rect class="v-loss" x="78" y="16" width="34" height="22" fill="#faa11b"/>
           <text x="8" y="57" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="13" letter-spacing="1" fill="#555553">NO WORK DONE</text>
         </svg></div>
-        <p>Distortion is power you pay for that does no work. It becomes losses and heat in the wiring, transformers, and motors.</p>
+        <p>Current you pay for that does no work, lost as heat in the wiring, transformers, and motors.</p>
       </div>
       <div class="rv">
         <span class="chip">2</span>
@@ -686,7 +790,7 @@
             <rect class="t-call" x="10" y="36" width="16" height="20"/><rect class="t-call" x="76" y="36" width="16" height="20"/>
           </g>
         </svg></div>
-        <p>Nuisance trips, overheated panels and neutrals, failed boards, and extra service calls all trace back to it.</p>
+        <p>Nuisance trips, overheated panels, failed boards, and extra service calls trace back to it.</p>
         <p class="claim"><span class="fig">Up to 40%</span><span class="lab">less maintenance</span></p>
       </div>
       <div class="rv">
@@ -704,43 +808,6 @@
         </svg></div>
         <p>Transformers, motors, and electronics run hotter and wear out early.</p>
         <p class="claim"><span class="fig">5 to 15</span><span class="lab">additional years of equipment life</span></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 4 : THE PLAN -->
-<section class="alt act">
-  <div class="wrap">
-    <div class="act-label rv"><span class="rule"></span><span>The plan</span></div>
-    <div class="prose">
-      <h2 class="rv">Cool it. Clean it. Store it.</h2>
-    </div>
-    <div class="levers">
-      <div class="lever rv">
-        <span class="name">Cool</span>
-        <p>We restore and stage the chillers and air handlers, add variable speed drives to fans and pumps, and match the outside air a smoking floor requires to the crowd, without compromising air quality. The air stays as clean as you require. What changes is what it costs to make it so.</p>
-      </div>
-      <div class="coolfeat rv">
-        <h3>Heating and cooling can be half your bill. We start there.</h3>
-        <p>Your chillers and air handlers run every hour of the year, so cooling is the first place the savings are.</p>
-        <p class="coolfeat__q">Watch the whole method in six minutes.</p>
-        <div class="film-inline">
-          <button type="button" class="film-inline__facade" data-film-inline aria-label="Play the six minute method film">
-            <img src="assets/img/film-cover.jpg" alt="" loading="lazy" width="1280" height="720">
-            <span class="film-inline__scrim" aria-hidden="true"></span>
-            <span class="film-inline__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
-            <span class="film-inline__meta" aria-hidden="true">The method &middot; 6 min</span>
-          </button>
-        </div>
-      </div>
-      <div class="lever rv">
-        <span class="name">Clean</span>
-        <p>We correct distortion at the source, on the circuits that create it. Less power is lost as heat, and the panels, transformers, and motors downstream run cooler.</p>
-      </div>
-      <div class="lever rv">
-        <span class="name">Store</span>
-        <p>Battery storage shaves the peaks that set the demand charge. It also stands behind the generators LionHeart already maintains, so the floor stays powered. The project is paid for from savings, and the federal storage tax credit and utility incentives are tailwinds where they apply.</p>
       </div>
     </div>
   </div>
@@ -767,7 +834,7 @@
         <div class="tcard__body">
           <span class="tag-k">The savings</span>
           <h3>Energy+</h3>
-          <p>Energy+ engineers the savings. Cooling, distortion correction, and storage are specified for each system and verified under IPMVP, the international measurement and verification protocol.</p>
+          <p>Energy+ engineers the savings. Cooling, peak shaving, and distortion correction are specified for each system and verified under IPMVP, the international measurement and verification protocol.</p>
         </div>
       </div>
     </div>
@@ -837,15 +904,15 @@
           <span class="m">HVAC and cooling is 40% of the bill, <span id="mHvac">$1,040,000</span>. Recovered at <span id="mPct">20</span>%.</span>
           <b id="mHvacSave">$208,000</b>
         </div>
-        <div class="eq-row quiet">
-          <span class="k">Power quality</span>
-          <span class="m">Lower losses, maintenance, and equipment wear. Real, and not counted in this estimate.</span>
-          <b>Not counted</b>
-        </div>
         <div class="eq-row">
           <span class="k">Peak shaving / storage</span>
           <span class="m">Peak cut 5%: <span id="mKw">185</span> kW &times; $22.57 &times; 12 months.</span>
           <b id="mDem">$50,100</b>
+        </div>
+        <div class="eq-row quiet">
+          <span class="k">Distortion correction</span>
+          <span class="m">Lower losses, maintenance, and equipment wear. Real, and not counted in this estimate.</span>
+          <b>Not counted</b>
         </div>
       </div>
       <div class="eq-visual">
@@ -865,7 +932,7 @@
           <li>Bill: an assumed 100 to 200 kWh per square foot across 233,000 square feet, at a stand-in Indiana tariff of $22.57 per kW per month and 7.0 cents per kWh.</li>
           <li>HVAC and cooling is taken as 40 percent of the bill, a published industry estimate we have not verified.</li>
           <li>Cooling recovery runs from 20 percent, the floor, to 50 percent at the upper end.</li>
-          <li>Peak shaving is a 5 percent cut of an assumed 3,700 to 7,300 kW peak. Power quality is not counted.</li>
+          <li>Peak shaving is a 5 percent cut of an assumed 3,700 to 7,300 kW peak. Distortion correction is not counted.</li>
         </ul>
       </details>
     </div>
@@ -951,7 +1018,7 @@
 
 <footer>
   <div class="wrap">
-    <p class="fine">Technology results shown are results achieved by the technologies we deploy at the sites named or documented in the studies cited, under their own conditions; they are not predictions for any specific property. Regional programs aggregate hundreds of additional sites into the 200 plus total. Savings figures in the technology record are stated as a share of the HVAC and cooling portion of a facility bill, not the whole bill. Estimates on this page use public benchmarks in place of your bills and are replaced by them. Power quality benefits, including the maintenance and equipment life ranges, are stated as up to figures, are not counted in the estimate, and are confirmed at your site. Tax credit availability is as of October 2026; confirm with tax counsel.</p>
+    <p class="fine">Technology results shown are results achieved by the technologies we deploy at the sites named or documented in the studies cited, under their own conditions; they are not predictions for any specific property. Regional programs aggregate hundreds of additional sites into the 200 plus total. Savings figures in the technology record are stated as a share of the HVAC and cooling portion of a facility bill, not the whole bill. Estimates on this page use public benchmarks in place of your bills and are replaced by them. Distortion correction benefits, including the maintenance and equipment life ranges, are stated as up to figures, are not counted in the estimate, and are confirmed at your site. Tax credit availability is as of October 2026; confirm with tax counsel.</p>
     <p class="fine">Sources: building size, opening, and slot count from Wikipedia and GGB News; ventilation guidance from ASHRAE 62.1 and industry casino design guidance; LionHeart service descriptions from lionheartpower.com.</p>
     <p class="fine">Prepared by LionHeart Critical Power Services in partnership with Energy+. Private and confidential, prepared for Horseshoe Indianapolis.</p>
   </div>
@@ -1098,8 +1165,8 @@
 
   const RECORD=[
     { t:"Hospitality and casino", rows:[
-      ["8.59% kW","Las Vegas Hotel & Casino","Hospitality · Las Vegas, NV","Independent panel metering"],
       ["14% kWh","Caribe Resort","Hospitality · Orange Beach, AL","Facilities-director measured"],
+      ["8.59% kW","Las Vegas Hotel & Casino","Hospitality · Las Vegas, NV","Independent panel metering"],
       ["13.5% kWh","Hilton Garden Inn","Hospitality · Marietta, GA","12-month study"],
       ["12 to 27%","UAE program","14 institutions incl. Sheraton Jumeirah, Flora Grand","14-institution deployment"]
     ]},
