@@ -23,6 +23,7 @@
 <style>
   :root{
     --blue:#0f4c91; --navy:#0d2a70; --amber:#faa11b;
+    --c-cool:#0f4c91; --c-peak:#faa11b; --c-dist:#0b7f86;
     --bg:#ffffff; --bg-alt:#f5f5f5; --panel:#ffffff;
     --ink:#262626; --body-c:#2f2f2f; --mut:#555553; --cap:#686868;
     --line:#e6e6e6; --line-blue:rgba(15,76,145,.35);
@@ -491,6 +492,51 @@
   .gate__body{padding:0 clamp(14px,2vw,20px) clamp(18px,2.6vw,26px) calc(clamp(14px,2vw,20px) + 48px)}
   .gate__body p{font-size:1.05rem;line-height:1.6;max-width:62ch;margin:0}
   @media (max-width:540px){.gate__body{padding-left:clamp(14px,2vw,20px)}}
+
+  /* framing band: three buckets of overspend, colors reused by the levers and the estimator */
+  .frame{padding:clamp(40px,6vw,76px) 0;background:#fff;border-top:1px solid var(--line)}
+  .frame h2{max-width:24ch;margin-bottom:12px}
+  .frame .lede{margin-bottom:clamp(22px,3.5vw,34px)}
+  .fbar-wrap{max-width:900px}
+  .fbar-top{display:flex;font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:17px;color:var(--ink);margin-bottom:8px}
+  .fbar-top .over{flex:0 0 30%;border-bottom:3px solid var(--ink);padding-bottom:4px;white-space:nowrap;min-width:max-content}
+  .fbar{display:flex;height:60px;background:#e9e9e9;gap:2px}
+  .fbar .seg{height:100%;flex:0 0 var(--w)}
+  .fbar .rest{flex:1 1 auto;background:#e3e3e3;display:flex;align-items:center;padding-left:14px;font-family:var(--disp);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:15px;color:var(--mut);overflow:hidden;white-space:nowrap}
+  .seg.s-cool,.sw-cool{background:var(--c-cool)}
+  .seg.s-peak,.sw-peak{background:var(--c-peak)}
+  .seg.s-dist,.sw-dist{background:var(--c-dist)}
+  .js .fbar .seg{flex-basis:0;transition:flex-basis 1.3s var(--ease) .3s}
+  .js .fbar .s-peak{transition-delay:.6s}
+  .js .fbar .s-dist{transition-delay:.9s}
+  .js .fbar.in .seg{flex-basis:var(--w)}
+  .flegend{margin-top:16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px clamp(12px,3vw,28px);list-style:none}
+  .flegend li{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(1.05rem,2.2vw,1.35rem);color:var(--ink)}
+  .sw{display:inline-block;width:18px;height:18px;flex:0 0 18px}
+  .fnote{margin-top:12px;font-size:15px;color:var(--cap)}
+  .act-label .sw{width:14px;height:14px;flex:0 0 14px;margin-right:-6px}
+  .act-label .rule.r-cool{background:var(--c-cool)}
+  .act-label .rule.r-peak{background:var(--c-peak)}
+  .act-label .rule.r-dist{background:var(--c-dist)}
+  @media (max-width:540px){.fbar{height:48px}.fbar .rest{font-size:13px;padding-left:8px}.fbar-top{font-size:14px}.flegend{grid-template-columns:1fr}}
+  @media (prefers-reduced-motion:reduce){.js .fbar .seg{flex-basis:var(--w);transition:none}}
+
+  /* estimator: colored rows and stacked bar */
+  .eq-row{border-left:6px solid var(--rc,var(--line));padding-left:14px}
+  .eq-row.r-cool{--rc:var(--c-cool)}
+  .eq-row.r-peak{--rc:var(--c-peak)}
+  .eq-row.r-dist{--rc:var(--c-dist)}
+  .eq-row .k{display:flex;align-items:center;gap:10px}
+  .eq-stack{margin-top:clamp(16px,2.5vw,24px)}
+  .eq-stack__cap{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:15px;color:var(--mut);margin-bottom:8px}
+  .eq-stack__bar{display:flex;height:34px;gap:2px;background:#fff}
+  .eq-stack__bar span{display:block;height:100%;width:0;transition:width .5s var(--ease)}
+  .eq-stack__lg{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--disp);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:15px;color:var(--ink)}
+  .eq-stack__lg span{display:inline-flex;align-items:center;gap:8px}
+  .eq-stack__lg .sw{width:12px;height:12px;flex-basis:12px}
+  .eq-batt{margin-top:8px;font-family:var(--mono);font-size:14px;color:var(--body-c);max-width:520px}
+  .eq-batt b{color:var(--c-dist);color:var(--ink)}
+  @media (prefers-reduced-motion:reduce){.eq-stack__bar span{transition:none}}
 </style>
 </head>
 <body>
@@ -653,12 +699,35 @@
   </div>
 </figure>
 
+<!-- FRAMING BAND -->
+<section class="frame">
+  <div class="wrap">
+    <h2 class="rv">An estimated 30 percent or more of what this building pays for power is overspend.</h2>
+    <p class="lede rv">It sits in three places: the cooling plant, the monthly peak, and distorted power.</p>
+    <div class="fbar-wrap">
+      <div class="fbar-top rv" aria-hidden="true"><span class="over">Overspend: 30%+</span></div>
+      <div class="fbar rv" role="img" aria-label="One bar for the annual power bill. About 30 percent of it is overspend, split into three parts: cooling, about 16; peak, about 5; distortion, about 9. Proportions are illustrative.">
+        <span class="seg s-cool" style="--w:16%"></span>
+        <span class="seg s-peak" style="--w:5%"></span>
+        <span class="seg s-dist" style="--w:9%"></span>
+        <span class="rest">Annual power bill</span>
+      </div>
+      <ul class="flegend rv">
+        <li><i class="sw sw-cool" aria-hidden="true"></i>Cooling</li>
+        <li><i class="sw sw-peak" aria-hidden="true"></i>Peak</li>
+        <li><i class="sw sw-dist" aria-hidden="true"></i>Distortion</li>
+      </ul>
+      <p class="fnote rv">Illustrative proportions of an annual power bill.</p>
+    </div>
+  </div>
+</section>
+
 <!-- 3 : LEVER 1, COOLING -->
 <section class="alt act lever-sec">
   <div class="wrap">
-    <div class="act-label rv"><span class="rule"></span><span><span class="lv">Lever 1</span> &middot; Cooling, the largest overspend</span></div>
+    <div class="act-label rv"><span class="rule r-cool"></span><i class="sw sw-cool" aria-hidden="true"></i><span><span class="lv">Lever 1</span> &middot; Cooling, the largest overspend</span></div>
       <div class="coolfeat rv">
-        <h3>Heating and cooling can be half your bill. We start there.</h3>
+        <h3>Cooling can be up to half your bill. Up to half of that is overspend.</h3>
         <p>Your chillers and air handlers run every hour of the year, so cooling is the first place the savings are.</p>
         <p>A smoking floor requires outside air. We match it to the crowd and hold air quality.</p>
         <p class="coolfeat__q">Watch the whole method in six minutes.</p>
@@ -677,10 +746,10 @@
 <!-- 4 : LEVER 2, PEAK DEMAND -->
 <section class="act lever-sec">
   <div class="wrap">
-    <div class="act-label rv"><span class="rule"></span><span><span class="lv">Lever 2</span> &middot; Peak demand</span></div>
+    <div class="act-label rv"><span class="rule r-peak"></span><i class="sw sw-peak" aria-hidden="true"></i><span><span class="lv">Lever 2</span> &middot; Peak demand</span></div>
     <div class="peak">
       <div class="peak__text rv">
-        <h2>A battery takes the peak off the meter.</h2>
+        <h2>One <span class="nb">fifteen-minute</span> peak sets as much as a third of your bill.</h2>
         <p class="lever-line">One quarter hour sets the demand charge for the whole month.</p>
         <p class="lever-line">A battery covers that peak, so the meter never sees it.</p>
         <p class="lever-line">The same battery stands behind the generators LionHeart already maintains, so the floor stays powered.</p>
@@ -716,10 +785,10 @@
 <!-- 5 : LEVER 3, ENERGY DISTORTION -->
 <section class="alt act lever-sec">
   <div class="wrap">
-    <div class="act-label rv"><span class="rule"></span><span><span class="lv">Lever 3</span> &middot; Energy distortion, which does more than the bill</span></div>
+    <div class="act-label rv"><span class="rule r-dist"></span><i class="sw sw-dist" aria-hidden="true"></i><span><span class="lv">Lever 3</span> &middot; Energy distortion, which does more than the bill</span></div>
     <div class="bridge">
       <div class="bridge__text rv">
-        <h2>Your floor sends distortion back into the building's power.</h2>
+        <h2>Distortion correction alone has cut 8 to 14 percent.</h2>
         <p class="lever-intro">Unlike the first two levers, this one lowers the bill, cuts maintenance, and extends equipment life.</p>
         <p>More than 1,500 slot machines, plus variable speed drives, LED drivers, and UPS units, draw current in distorted pulses instead of a smooth wave.</p>
       </div>
@@ -881,11 +950,11 @@
 <section class="alt">
   <div class="wrap">
     <div class="prose">
-      <h2 class="rv">Planned at the floor of every range.</h2>
-      <p class="rv">We have not seen a bill, so we estimated one from public benchmarks and planned at the bottom of every range. Move the sliders to see how the floor changes.</p>
+      <h2 class="rv">Planned low in every range.</h2>
+      <p class="rv">We have not seen a bill, so we estimated one from public benchmarks and planned low in every range. Move the sliders to see how the numbers change.</p>
     </div>
     <div class="equation rv" id="equation">
-      <p class="eq-intro">What the floor of the range returns</p>
+      <p class="eq-intro">What the three levers return</p>
       <div class="eq-controls">
         <div class="eq-ctl">
           <label for="eqBill">Annual electric bill: <strong id="eqBillVal">$2.6M</strong></label>
@@ -893,35 +962,59 @@
           <div class="eq-ends" aria-hidden="true"><span>Floor estimate</span><span>High estimate</span></div>
         </div>
         <div class="eq-ctl">
-          <label for="eqPct">HVAC and cooling recovered: <strong id="eqPctVal">20%</strong></label>
+          <label for="eqPct">Cooling recovered: <strong id="eqPctVal">20%</strong></label>
           <input type="range" id="eqPct" min="20" max="50" step="1" value="20" aria-label="Share of HVAC and cooling cost recovered, percent">
           <div class="eq-ends" aria-hidden="true"><span>Planning floor</span><span>Upper figure</span></div>
         </div>
+        <div class="eq-ctl">
+          <label for="eqPeak">Peak demand shaved by battery: <strong id="eqPeakVal">10%</strong></label>
+          <input type="range" id="eqPeak" min="5" max="25" step="1" value="10" aria-label="Share of peak demand shaved by a battery, percent">
+          <div class="eq-ends" aria-hidden="true"><span>Low</span><span>High</span></div>
+          <p class="eq-batt">Battery sized about <b id="mBattKw">370</b> kW / <b id="mBattKwh">1,500</b> kWh</p>
+        </div>
+        <div class="eq-ctl">
+          <label for="eqDist">Distortion correction: <strong id="eqDistVal">5%</strong></label>
+          <input type="range" id="eqDist" min="3" max="14" step="1" value="5" aria-label="Distortion correction savings, percent of the annual bill">
+          <div class="eq-ends" aria-hidden="true"><span>Low</span><span>High</span></div>
+        </div>
       </div>
       <div class="eq-rows" aria-live="polite">
-        <div class="eq-row">
-          <span class="k">Cooling</span>
+        <div class="eq-row r-cool">
+          <span class="k"><i class="sw sw-cool" aria-hidden="true"></i>Cooling</span>
           <span class="m">HVAC and cooling is 40% of the bill, <span id="mHvac">$1,040,000</span>. Recovered at <span id="mPct">20</span>%.</span>
           <b id="mHvacSave">$208,000</b>
         </div>
-        <div class="eq-row">
-          <span class="k">Peak shaving / storage</span>
-          <span class="m">Peak cut 5%: <span id="mKw">185</span> kW &times; $22.57 &times; 12 months.</span>
-          <b id="mDem">$50,100</b>
+        <div class="eq-row r-peak">
+          <span class="k"><i class="sw sw-peak" aria-hidden="true"></i>Peak shaving / storage</span>
+          <span class="m">Peak cut <span id="mPeakPct">10</span>%: <span id="mKw">370</span> kW &times; $22.57 &times; 12 months.</span>
+          <b id="mDem">$100,200</b>
         </div>
-        <div class="eq-row quiet">
-          <span class="k">Distortion correction</span>
-          <span class="m">Lower losses, maintenance, and equipment wear. Real, and not counted in this estimate.</span>
-          <b>Not counted</b>
+        <div class="eq-row r-dist">
+          <span class="k"><i class="sw sw-dist" aria-hidden="true"></i>Distortion correction</span>
+          <span class="m"><span id="mDistPct">5</span>% of the <span id="mBill">$2,600,000</span> bill.</span>
+          <b id="mDist">$130,000</b>
+        </div>
+      </div>
+      <div class="eq-stack">
+        <div class="eq-stack__cap">Where the savings come from</div>
+        <div class="eq-stack__bar" id="eqStack" role="img" aria-label="Stacked bar of annual savings by lever">
+          <span id="sgCool" class="sw-cool" style="width:47.5%"></span>
+          <span id="sgPeak" class="sw-peak" style="width:22.9%"></span>
+          <span id="sgDist" class="sw-dist" style="width:29.7%"></span>
+        </div>
+        <div class="eq-stack__lg" aria-hidden="true">
+          <span><i class="sw sw-cool"></i>Cooling</span>
+          <span><i class="sw sw-peak"></i>Peak shaving / storage</span>
+          <span><i class="sw sw-dist"></i>Distortion correction</span>
         </div>
       </div>
       <div class="eq-visual">
         <div class="eq-val">
-          <span class="eq-big">$<span id="eqAnnual">258,100</span></span>
-          <span class="eq-label">back every year, <b id="mShare">9.9</b>% of the annual bill.</span>
+          <span class="eq-big">$<span id="eqAnnual">438,200</span></span>
+          <span class="eq-label">back every year, <b id="mShare">16.9</b>% of the annual bill.</span>
         </div>
         <div class="eq-val">
-          <span class="eq-big">$<span id="eqTen">2,581,000</span></span>
+          <span class="eq-big">$<span id="eqTen">4,382,000</span></span>
           <span class="eq-label">over ten years. Annual figure times ten, no escalation.</span>
         </div>
       </div>
@@ -929,10 +1022,11 @@
       <details class="eq-how">
         <summary>How this estimate is built</summary>
         <ul>
-          <li>Bill: an assumed 100 to 200 kWh per square foot across 233,000 square feet, at a stand-in Indiana tariff of $22.57 per kW per month and 7.0 cents per kWh.</li>
-          <li>HVAC and cooling is taken as 40 percent of the bill, a published industry estimate we have not verified.</li>
-          <li>Cooling recovery runs from 20 percent, the floor, to 50 percent at the upper end.</li>
-          <li>Peak shaving is a 5 percent cut of an assumed 3,700 to 7,300 kW peak. Distortion correction is not counted.</li>
+          <li>Bill and cooling: an assumed 100 to 200 kWh per square foot across 233,000 square feet at 7.0 cents per kWh, with cooling taken as 40 percent of the bill, a published industry estimate we have not verified.</li>
+          <li>Demand rate: a stand-in Indiana tariff of $22.57 per kW per month, applied to an assumed 3,700 to 7,300 kW peak.</li>
+          <li>The battery shaving range of 5 to 25 percent reflects a 24/7 load with a narrow evening peak.</li>
+          <li>The distortion range of 3 to 14 percent of the bill is anchored by the two proof results above, 8.6 and 14 percent.</li>
+          <li>The three levers overlap somewhat, so the defaults sit low. Your bills replace every assumption in step one.</li>
         </ul>
       </details>
     </div>
@@ -950,7 +1044,7 @@
       </details>
       <details class="gate rv">
         <summary><span class="plus" aria-hidden="true">+</span>Finance and Controller</summary>
-        <div class="gate__body"><p>No capital outlay to start; the project is paid for from savings. The estimate above is planned at the floor of every range and is replaced by your own bills in step one. Federal storage tax credits and utility incentives are tailwinds where they apply.</p></div>
+        <div class="gate__body"><p>No capital outlay to start; the project is paid for from savings. The estimate above is planned low in every range and is replaced by your own bills in step one. Federal storage tax credits and utility incentives are tailwinds where they apply.</p></div>
       </details>
       <details class="gate rv">
         <summary><span class="plus" aria-hidden="true">+</span>Corporate and ownership approval</summary>
@@ -985,7 +1079,7 @@
         <span class="chip">3</span>
         <div>
           <h3>Findings in 30 days</h3>
-          <p>A breakdown by system of where the money is going, which measures apply, and the savings planned at the floor. Then you decide.</p>
+          <p>A breakdown by system of where the money is going, which measures apply, and the savings planned low. Then you decide.</p>
         </div>
       </div>
     </div>
@@ -1018,7 +1112,7 @@
 
 <footer>
   <div class="wrap">
-    <p class="fine">Technology results shown are results achieved by the technologies we deploy at the sites named or documented in the studies cited, under their own conditions; they are not predictions for any specific property. Regional programs aggregate hundreds of additional sites into the 200 plus total. Savings figures in the technology record are stated as a share of the HVAC and cooling portion of a facility bill, not the whole bill. Estimates on this page use public benchmarks in place of your bills and are replaced by them. Distortion correction benefits, including the maintenance and equipment life ranges, are stated as up to figures, are not counted in the estimate, and are confirmed at your site. Tax credit availability is as of October 2026; confirm with tax counsel.</p>
+    <p class="fine">Technology results shown are results achieved by the technologies we deploy at the sites named or documented in the studies cited, under their own conditions; they are not predictions for any specific property. Regional programs aggregate hundreds of additional sites into the 200 plus total. Savings figures in the technology record are stated as a share of the HVAC and cooling portion of a facility bill, not the whole bill. Estimates on this page use public benchmarks in place of your bills and are replaced by them. Distortion correction benefits, including the maintenance and equipment life ranges, are stated as up to figures and are confirmed at your site. Tax credit availability is as of October 2026; confirm with tax counsel.</p>
     <p class="fine">Sources: building size, opening, and slot count from Wikipedia and GGB News; ventilation guidance from ASHRAE 62.1 and industry casino design guidance; LionHeart service descriptions from lionheartpower.com.</p>
     <p class="fine">Prepared by LionHeart Critical Power Services in partnership with Energy+. Private and confidential, prepared for Horseshoe Indianapolis.</p>
   </div>
@@ -1085,31 +1179,46 @@
   (function(){
     if(!document.getElementById('eqBill'))return;
     const bill=document.getElementById('eqBill'),pct=document.getElementById('eqPct');
+    const peakS=document.getElementById('eqPeak'),distS=document.getElementById('eqDist');
     const $=id=>document.getElementById(id);
     const RATE=22.57,HVAC_SHARE=0.4;
     const fmt=n=>n.toLocaleString('en-US');
     const r100=n=>Math.round(n/100)*100;
     const render=()=>{
-      const b=parseFloat(bill.value),p=parseInt(pct.value,10);
-      const billD=b*1e6;
+      const b=parseFloat(bill.value),p=parseInt(pct.value,10),sp=parseInt(peakS.value,10),sd=parseInt(distS.value,10);
+      const billD=Math.round(b*1e6);
       const hvac=billD*HVAC_SHARE,hvacSave=r100(hvac*p/100);
       const peak=3700+(b-2.6)/2.6*3600;
-      const shave=5,kw=Math.round(peak*shave/100);
+      const kw=Math.round(peak*sp/100);
       const dem=r100(kw*RATE*12);
-      const tot=hvacSave+dem;
+      const dist=r100(billD*sd/100);
+      const tot=hvacSave+dem+dist;
+      const battKw=Math.round(kw/10)*10,battKwh=r100(battKw*4);
       $('eqBillVal').textContent='$'+b.toFixed(1)+'M';
       $('eqPctVal').textContent=p+'%';
+      $('eqPeakVal').textContent=sp+'%';
+      $('eqDistVal').textContent=sd+'%';
       $('mHvac').textContent='$'+fmt(Math.round(hvac/1000)*1000);
       $('mPct').textContent=p;
       $('mHvacSave').textContent='$'+fmt(hvacSave);
+      $('mPeakPct').textContent=sp;
       $('mKw').textContent=fmt(kw);
       $('mDem').textContent='$'+fmt(dem);
+      $('mDistPct').textContent=sd;
+      $('mBill').textContent='$'+fmt(billD);
+      $('mDist').textContent='$'+fmt(dist);
+      $('mBattKw').textContent=fmt(battKw);
+      $('mBattKwh').textContent=fmt(battKwh);
       $('mShare').textContent=(tot/billD*100).toFixed(1);
       $('eqAnnual').textContent=fmt(tot);
       $('eqTen').textContent=fmt(tot*10);
+      $('sgCool').style.width=(hvacSave/tot*100).toFixed(2)+'%';
+      $('sgPeak').style.width=(dem/tot*100).toFixed(2)+'%';
+      $('sgDist').style.width=(dist/tot*100).toFixed(2)+'%';
+      $('eqStack').setAttribute('aria-label','Annual savings by lever: cooling '+Math.round(hvacSave/tot*100)+' percent, peak shaving '+Math.round(dem/tot*100)+' percent, distortion correction '+Math.round(dist/tot*100)+' percent.');
     };
     render();
-    bill.addEventListener('input',render);pct.addEventListener('input',render);
+    [bill,pct,peakS,distS].forEach(el=>el.addEventListener('input',render));
     const eq=$('equation');
     if(eq&&!eq.classList.contains('in')){
       new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){eq.classList.add('in');o.disconnect()}},{threshold:.2}).observe(eq);
