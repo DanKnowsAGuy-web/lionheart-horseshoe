@@ -68,8 +68,8 @@
   .hero-bg,.hero-tint,.hero-bokeh,.hero-scrim{position:absolute;inset:0}
   .hero-bg{display:block;z-index:-4}
   .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 50%;display:block;
-    filter:brightness(calc(.35 + .55 * var(--p))) saturate(calc(.15 + .95 * var(--p)))}
-  .hero-tint{z-index:-3;background:#0d2a70;opacity:calc(.62 - .5 * var(--p))}
+    filter:brightness(calc(.55 + .35 * var(--p))) saturate(calc(.3 + .8 * var(--p)))}
+  .hero-tint{z-index:-3;background:#0d2a70;opacity:calc(.45 - .33 * var(--p))}
   .hero-bokeh{z-index:-2;overflow:hidden;mix-blend-mode:screen;opacity:calc(.22 + .78 * var(--p));filter:saturate(calc(.35 + 1.1 * var(--p)))}
   .bk{position:absolute;border-radius:50%;filter:blur(3px)}
   @media (prefers-reduced-motion:no-preference){.bk{animation:bkDrift var(--dur,60s) ease-in-out infinite alternate}}
@@ -388,6 +388,75 @@
 
   .tag-k{display:block;font-family:var(--disp);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:15px;color:var(--blue)}
   .pair .tag-k{font-family:var(--disp);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:15px;color:var(--blue)}
+
+  .nb{white-space:nowrap}
+
+  /* distortion bridge */
+  .bridge{margin-top:clamp(8px,2vw,14px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,5vw,60px);align-items:center}
+  .bridge__text p{font-size:1.15rem;line-height:1.6;max-width:44ch}
+  .bridge__viz{background:var(--navy);padding:clamp(14px,2.4vw,24px);position:relative}
+  .bridge__viz::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--amber)}
+  .bridge-svg{width:100%;height:auto;display:block}
+  .bridge-svg .bt{font-family:var(--disp);font-weight:600;font-size:17px;letter-spacing:.12em;fill:#cfdbf2}
+  .bridge-svg .bt-amber{fill:var(--amber);font-weight:700}
+  .bridge-svg .bt-big{fill:#fff;font-weight:700;font-size:17px}
+  .bridge-svg .bax{stroke:rgba(255,255,255,.3);stroke-width:1.5}
+  .bridge-svg .w-line{fill:none;stroke-width:4;stroke-linejoin:round}
+  .bridge-svg .w-clean{stroke:#fff}
+  .bridge-svg .w-dist{stroke:#fff}
+  .bridge-svg .w-fund{fill:none;stroke:rgba(255,255,255,.55);stroke-width:2;stroke-dasharray:5 5}
+  .bridge-svg .w-shade{fill:var(--amber);fill-opacity:.95}
+  .bridge-svg .b-arrow{stroke:var(--amber);stroke-width:3;stroke-dasharray:6 5}
+  .bridge-svg .b-head{fill:var(--amber)}
+  .bridge-svg .b-needle{transform:rotate(40deg);transform-origin:0 0}
+  @media (prefers-reduced-motion:no-preference){
+    .js .bridge__viz .w-line{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.8s var(--ease) .2s}
+    .js .bridge__viz.in .w-line{stroke-dashoffset:0}
+    .js .bridge__viz .w-shade{opacity:0;transition:opacity .9s ease 1.6s}
+    .js .bridge__viz.in .w-shade{opacity:1}
+    .bridge__viz.in .b-needle{animation:bNeedle 6s cubic-bezier(.45,0,.25,1) 2s infinite alternate}
+  }
+  @keyframes bNeedle{from{transform:rotate(14deg)}to{transform:rotate(44deg)}}
+  @media (max-width:820px){.bridge{grid-template-columns:1fr}}
+  .proofline{margin-top:clamp(26px,4vw,40px);padding:clamp(18px,3vw,26px) clamp(18px,3vw,30px);border-left:6px solid var(--amber);background:var(--bg-alt);display:flex;gap:clamp(16px,3vw,32px);align-items:center;flex-wrap:wrap}
+  .proofline .big{font-family:var(--mono);font-weight:600;font-size:clamp(2.4rem,5.4vw,3.6rem);color:var(--blue);line-height:1;white-space:nowrap}
+  .proofline p{flex:1 1 280px;font-size:1.12rem;line-height:1.5;color:var(--body-c);max-width:62ch;margin:0}
+  .proofline p strong{color:var(--ink)}
+
+  /* cool feature and film */
+  .coolfeat{margin-top:clamp(22px,3.5vw,34px);padding:clamp(22px,3.5vw,34px);background:#fff;border:1px solid var(--line);border-top:4px solid var(--amber)}
+  .coolfeat h3{font-size:clamp(1.5rem,3.2vw,2.1rem);line-height:1.12;max-width:36ch}
+  .coolfeat p{margin-top:10px;max-width:56ch;font-size:1.08rem}
+  .coolfeat .coolfeat__q{margin-top:clamp(18px,3vw,26px);font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink);font-size:1.3rem}
+  .film-inline{margin-top:12px;max-width:760px;aspect-ratio:16/9;background:var(--navy);position:relative}
+  .film-inline__facade{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;margin:0;cursor:pointer;background:var(--navy);display:block;overflow:hidden}
+  .film-inline__facade img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.06) brightness(.85);transition:transform .7s var(--ease)}
+  .film-inline__facade:hover img{transform:scale(1.02)}
+  .film-inline__scrim{position:absolute;inset:0;background:rgba(13,42,112,.45)}
+  .film-inline__play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(60px,10vw,84px);height:clamp(60px,10vw,84px);border-radius:50%;background:var(--amber);color:var(--navy);display:flex;align-items:center;justify-content:center;transition:transform .3s var(--ease)}
+  .film-inline__play svg{width:46%;height:46%;margin-left:6%}
+  .film-inline__facade:hover .film-inline__play{transform:translate(-50%,-50%) scale(1.08)}
+  .film-inline__facade:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+  .film-inline__meta{position:absolute;left:16px;bottom:12px;font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+  .film-inline iframe{display:block;width:100%;height:100%;aspect-ratio:16/9;border:0;background:var(--navy)}
+
+  /* everyone who has to say yes */
+  .yes{margin-top:clamp(44px,7vw,80px)}
+  .yes h2{margin-bottom:12px}
+  .yes__lead{max-width:56ch;margin-bottom:clamp(18px,3vw,28px)}
+  .gate{border-top:1px solid var(--line);background:#fff}
+  .gate:last-of-type{border-bottom:1px solid var(--line)}
+  .gate summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:clamp(16px,2.4vw,22px) clamp(14px,2vw,20px);font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--ink);transition:background .25s}
+  .gate summary::-webkit-details-marker{display:none}
+  .gate summary:hover{background:#fbfcfe}
+  .gate summary:focus-visible{outline:3px solid var(--amber);outline-offset:-3px}
+  .gate .plus{flex:0 0 32px;height:32px;display:inline-flex;align-items:center;justify-content:center;background:var(--blue);color:#fff;font-size:0;transition:background .25s}
+  .gate .plus::before{content:'+';font-family:var(--disp);font-size:26px;line-height:1;display:block;transition:transform .3s var(--ease)}
+  .gate[open] .plus{background:var(--amber);color:var(--navy)}
+  .gate[open] .plus::before{transform:rotate(45deg)}
+  .gate__body{padding:0 clamp(14px,2vw,20px) clamp(18px,2.6vw,26px) calc(clamp(14px,2vw,20px) + 48px)}
+  .gate__body p{font-size:1.05rem;line-height:1.6;max-width:62ch;margin:0}
+  @media (max-width:540px){.gate__body{padding-left:clamp(14px,2vw,20px)}}
 </style>
 </head>
 <body>
@@ -420,7 +489,7 @@
     <div class="wrap hero-grid">
     <div class="hero-text">
       <p class="addressee rv">For the Horseshoe Indianapolis property team &middot; October 2026</p>
-      <h1 class="rv">A building that never closes has <em>no off-hours</em> to recover the cost of power.</h1>
+      <h1 class="rv">A building that never closes has <em>no <span class="nb">off-hours</span></em> to recover the cost of power.</h1>
       <p class="lead rv">Horseshoe Indianapolis runs 8,760 hours a year, four times the hours of an office, so every overspent kilowatt is paid for around the clock. We cut that cost while the floor, the air, and the power stay exactly as they are.</p>
     </div>
     </div>
@@ -555,9 +624,44 @@
     <div class="act-label rv"><span class="rule"></span><span>Energy distortion</span></div>
     <div class="prose">
       <h2 class="rv">Your floor sends distortion back into the building's power.</h2>
-      <p class="rv">More than 1,500 slot machines, variable speed drives, LED drivers, UPS units, and other electronics push distortion back into the electrical system. It lands in three places.</p>
     </div>
-    <div class="triple">
+    <div class="bridge">
+      <div class="bridge__text rv">
+        <p>More than 1,500 slot machines, plus variable speed drives, LED drivers, and UPS units, draw current in distorted pulses instead of a smooth wave.</p>
+        <p>The building pays for that extra current, but it does no useful work. It leaves as heat and losses in the wiring, transformers, and motors, and it raises the demand the utility bills.</p>
+      </div>
+      <div class="bridge__viz rv">
+        <svg class="bridge-svg" viewBox="0 0 560 320" role="img" aria-label="A clean current wave beside a distorted current wave. The extra area of the distorted wave is shaded amber: current the building pays for that does no work. It feeds a meter reading high.">
+          <text class="bt" x="36" y="32">CLEAN CURRENT</text>
+          <line class="bax" x1="36" y1="78" x2="356" y2="78"/>
+          <path class="w-line w-clean" pathLength="1" d="M36.0 78.0 L38.0 75.6 L40.0 73.3 L42.0 71.0 L44.0 68.7 L46.0 66.5 L48.0 64.4 L50.0 62.3 L52.0 60.4 L54.0 58.5 L56.0 56.8 L58.0 55.2 L60.0 53.7 L62.0 52.4 L64.0 51.3 L66.0 50.3 L68.0 49.5 L70.0 48.8 L72.0 48.4 L74.0 48.1 L76.0 48.0 L78.0 48.1 L80.0 48.4 L82.0 48.8 L84.0 49.5 L86.0 50.3 L88.0 51.3 L90.0 52.4 L92.0 53.7 L94.0 55.2 L96.0 56.8 L98.0 58.5 L100.0 60.4 L102.0 62.3 L104.0 64.4 L106.0 66.5 L108.0 68.7 L110.0 71.0 L112.0 73.3 L114.0 75.6 L116.0 78.0 L118.0 80.4 L120.0 82.7 L122.0 85.0 L124.0 87.3 L126.0 89.5 L128.0 91.6 L130.0 93.7 L132.0 95.6 L134.0 97.5 L136.0 99.2 L138.0 100.8 L140.0 102.3 L142.0 103.6 L144.0 104.7 L146.0 105.7 L148.0 106.5 L150.0 107.2 L152.0 107.6 L154.0 107.9 L156.0 108.0 L158.0 107.9 L160.0 107.6 L162.0 107.2 L164.0 106.5 L166.0 105.7 L168.0 104.7 L170.0 103.6 L172.0 102.3 L174.0 100.8 L176.0 99.2 L178.0 97.5 L180.0 95.6 L182.0 93.7 L184.0 91.6 L186.0 89.5 L188.0 87.3 L190.0 85.0 L192.0 82.7 L194.0 80.4 L196.0 78.0 L198.0 75.6 L200.0 73.3 L202.0 71.0 L204.0 68.7 L206.0 66.5 L208.0 64.4 L210.0 62.3 L212.0 60.4 L214.0 58.5 L216.0 56.8 L218.0 55.2 L220.0 53.7 L222.0 52.4 L224.0 51.3 L226.0 50.3 L228.0 49.5 L230.0 48.8 L232.0 48.4 L234.0 48.1 L236.0 48.0 L238.0 48.1 L240.0 48.4 L242.0 48.8 L244.0 49.5 L246.0 50.3 L248.0 51.3 L250.0 52.4 L252.0 53.7 L254.0 55.2 L256.0 56.8 L258.0 58.5 L260.0 60.4 L262.0 62.3 L264.0 64.4 L266.0 66.5 L268.0 68.7 L270.0 71.0 L272.0 73.3 L274.0 75.6 L276.0 78.0 L278.0 80.4 L280.0 82.7 L282.0 85.0 L284.0 87.3 L286.0 89.5 L288.0 91.6 L290.0 93.7 L292.0 95.6 L294.0 97.5 L296.0 99.2 L298.0 100.8 L300.0 102.3 L302.0 103.6 L304.0 104.7 L306.0 105.7 L308.0 106.5 L310.0 107.2 L312.0 107.6 L314.0 107.9 L316.0 108.0 L318.0 107.9 L320.0 107.6 L322.0 107.2 L324.0 106.5 L326.0 105.7 L328.0 104.7 L330.0 103.6 L332.0 102.3 L334.0 100.8 L336.0 99.2 L338.0 97.5 L340.0 95.6 L342.0 93.7 L344.0 91.6 L346.0 89.5 L348.0 87.3 L350.0 85.0 L352.0 82.7 L354.0 80.4 L356.0 78.0"/>
+          <text class="bt" x="36" y="146">DISTORTED CURRENT</text>
+          <line class="bax" x1="36" y1="208" x2="356" y2="208"/>
+          <path class="w-shade" d="M36.0 208.0 L38.0 205.9 L40.0 204.2 L42.0 203.0 L44.0 202.5 L46.0 202.7 L48.0 203.3 L50.0 204.3 L52.0 205.0 L54.0 205.1 L56.0 204.2 L58.0 202.0 L60.0 198.4 L62.0 193.5 L64.0 187.6 L66.0 181.0 L68.0 174.4 L70.0 168.4 L72.0 163.6 L74.0 160.5 L76.0 159.4 L78.0 160.5 L80.0 163.6 L82.0 168.4 L84.0 174.4 L86.0 181.0 L88.0 187.6 L90.0 193.5 L92.0 198.4 L94.0 202.0 L96.0 204.2 L98.0 205.1 L100.0 205.0 L102.0 204.3 L104.0 203.3 L106.0 202.7 L108.0 202.5 L110.0 203.0 L112.0 204.2 L114.0 205.9 L116.0 208.0 L118.0 210.1 L120.0 211.8 L122.0 213.0 L124.0 213.5 L126.0 213.3 L128.0 212.7 L130.0 211.7 L132.0 211.0 L134.0 210.9 L136.0 211.8 L138.0 214.0 L140.0 217.6 L142.0 222.5 L144.0 228.4 L146.0 235.0 L148.0 241.6 L150.0 247.6 L152.0 252.4 L154.0 255.5 L156.0 256.6 L158.0 255.5 L160.0 252.4 L162.0 247.6 L164.0 241.6 L166.0 235.0 L168.0 228.4 L170.0 222.5 L172.0 217.6 L174.0 214.0 L176.0 211.8 L178.0 210.9 L180.0 211.0 L182.0 211.7 L184.0 212.7 L186.0 213.3 L188.0 213.5 L190.0 213.0 L192.0 211.8 L194.0 210.1 L196.0 208.0 L198.0 205.9 L200.0 204.2 L202.0 203.0 L204.0 202.5 L206.0 202.7 L208.0 203.3 L210.0 204.3 L212.0 205.0 L214.0 205.1 L216.0 204.2 L218.0 202.0 L220.0 198.4 L222.0 193.5 L224.0 187.6 L226.0 181.0 L228.0 174.4 L230.0 168.4 L232.0 163.6 L234.0 160.5 L236.0 159.4 L238.0 160.5 L240.0 163.6 L242.0 168.4 L244.0 174.4 L246.0 181.0 L248.0 187.6 L250.0 193.5 L252.0 198.4 L254.0 202.0 L256.0 204.2 L258.0 205.1 L260.0 205.0 L262.0 204.3 L264.0 203.3 L266.0 202.7 L268.0 202.5 L270.0 203.0 L272.0 204.2 L274.0 205.9 L276.0 208.0 L278.0 210.1 L280.0 211.8 L282.0 213.0 L284.0 213.5 L286.0 213.3 L288.0 212.7 L290.0 211.7 L292.0 211.0 L294.0 210.9 L296.0 211.8 L298.0 214.0 L300.0 217.6 L302.0 222.5 L304.0 228.4 L306.0 235.0 L308.0 241.6 L310.0 247.6 L312.0 252.4 L314.0 255.5 L316.0 256.6 L318.0 255.5 L320.0 252.4 L322.0 247.6 L324.0 241.6 L326.0 235.0 L328.0 228.4 L330.0 222.5 L332.0 217.6 L334.0 214.0 L336.0 211.8 L338.0 210.9 L340.0 211.0 L342.0 211.7 L344.0 212.7 L346.0 213.3 L348.0 213.5 L350.0 213.0 L352.0 211.8 L354.0 210.1 L356.0 208.0 L356.0 208.0 L354.0 210.4 L352.0 212.7 L350.0 215.0 L348.0 217.3 L346.0 219.5 L344.0 221.6 L342.0 223.7 L340.0 225.6 L338.0 227.5 L336.0 229.2 L334.0 230.8 L332.0 232.3 L330.0 233.6 L328.0 234.7 L326.0 235.7 L324.0 236.5 L322.0 237.2 L320.0 237.6 L318.0 237.9 L316.0 238.0 L314.0 237.9 L312.0 237.6 L310.0 237.2 L308.0 236.5 L306.0 235.7 L304.0 234.7 L302.0 233.6 L300.0 232.3 L298.0 230.8 L296.0 229.2 L294.0 227.5 L292.0 225.6 L290.0 223.7 L288.0 221.6 L286.0 219.5 L284.0 217.3 L282.0 215.0 L280.0 212.7 L278.0 210.4 L276.0 208.0 L274.0 205.6 L272.0 203.3 L270.0 201.0 L268.0 198.7 L266.0 196.5 L264.0 194.4 L262.0 192.3 L260.0 190.4 L258.0 188.5 L256.0 186.8 L254.0 185.2 L252.0 183.7 L250.0 182.4 L248.0 181.3 L246.0 180.3 L244.0 179.5 L242.0 178.8 L240.0 178.4 L238.0 178.1 L236.0 178.0 L234.0 178.1 L232.0 178.4 L230.0 178.8 L228.0 179.5 L226.0 180.3 L224.0 181.3 L222.0 182.4 L220.0 183.7 L218.0 185.2 L216.0 186.8 L214.0 188.5 L212.0 190.4 L210.0 192.3 L208.0 194.4 L206.0 196.5 L204.0 198.7 L202.0 201.0 L200.0 203.3 L198.0 205.6 L196.0 208.0 L194.0 210.4 L192.0 212.7 L190.0 215.0 L188.0 217.3 L186.0 219.5 L184.0 221.6 L182.0 223.7 L180.0 225.6 L178.0 227.5 L176.0 229.2 L174.0 230.8 L172.0 232.3 L170.0 233.6 L168.0 234.7 L166.0 235.7 L164.0 236.5 L162.0 237.2 L160.0 237.6 L158.0 237.9 L156.0 238.0 L154.0 237.9 L152.0 237.6 L150.0 237.2 L148.0 236.5 L146.0 235.7 L144.0 234.7 L142.0 233.6 L140.0 232.3 L138.0 230.8 L136.0 229.2 L134.0 227.5 L132.0 225.6 L130.0 223.7 L128.0 221.6 L126.0 219.5 L124.0 217.3 L122.0 215.0 L120.0 212.7 L118.0 210.4 L116.0 208.0 L114.0 205.6 L112.0 203.3 L110.0 201.0 L108.0 198.7 L106.0 196.5 L104.0 194.4 L102.0 192.3 L100.0 190.4 L98.0 188.5 L96.0 186.8 L94.0 185.2 L92.0 183.7 L90.0 182.4 L88.0 181.3 L86.0 180.3 L84.0 179.5 L82.0 178.8 L80.0 178.4 L78.0 178.1 L76.0 178.0 L74.0 178.1 L72.0 178.4 L70.0 178.8 L68.0 179.5 L66.0 180.3 L64.0 181.3 L62.0 182.4 L60.0 183.7 L58.0 185.2 L56.0 186.8 L54.0 188.5 L52.0 190.4 L50.0 192.3 L48.0 194.4 L46.0 196.5 L44.0 198.7 L42.0 201.0 L40.0 203.3 L38.0 205.6 L36.0 208.0 Z"/>
+          <path class="w-fund" d="M36.0 208.0 L38.0 205.6 L40.0 203.3 L42.0 201.0 L44.0 198.7 L46.0 196.5 L48.0 194.4 L50.0 192.3 L52.0 190.4 L54.0 188.5 L56.0 186.8 L58.0 185.2 L60.0 183.7 L62.0 182.4 L64.0 181.3 L66.0 180.3 L68.0 179.5 L70.0 178.8 L72.0 178.4 L74.0 178.1 L76.0 178.0 L78.0 178.1 L80.0 178.4 L82.0 178.8 L84.0 179.5 L86.0 180.3 L88.0 181.3 L90.0 182.4 L92.0 183.7 L94.0 185.2 L96.0 186.8 L98.0 188.5 L100.0 190.4 L102.0 192.3 L104.0 194.4 L106.0 196.5 L108.0 198.7 L110.0 201.0 L112.0 203.3 L114.0 205.6 L116.0 208.0 L118.0 210.4 L120.0 212.7 L122.0 215.0 L124.0 217.3 L126.0 219.5 L128.0 221.6 L130.0 223.7 L132.0 225.6 L134.0 227.5 L136.0 229.2 L138.0 230.8 L140.0 232.3 L142.0 233.6 L144.0 234.7 L146.0 235.7 L148.0 236.5 L150.0 237.2 L152.0 237.6 L154.0 237.9 L156.0 238.0 L158.0 237.9 L160.0 237.6 L162.0 237.2 L164.0 236.5 L166.0 235.7 L168.0 234.7 L170.0 233.6 L172.0 232.3 L174.0 230.8 L176.0 229.2 L178.0 227.5 L180.0 225.6 L182.0 223.7 L184.0 221.6 L186.0 219.5 L188.0 217.3 L190.0 215.0 L192.0 212.7 L194.0 210.4 L196.0 208.0 L198.0 205.6 L200.0 203.3 L202.0 201.0 L204.0 198.7 L206.0 196.5 L208.0 194.4 L210.0 192.3 L212.0 190.4 L214.0 188.5 L216.0 186.8 L218.0 185.2 L220.0 183.7 L222.0 182.4 L224.0 181.3 L226.0 180.3 L228.0 179.5 L230.0 178.8 L232.0 178.4 L234.0 178.1 L236.0 178.0 L238.0 178.1 L240.0 178.4 L242.0 178.8 L244.0 179.5 L246.0 180.3 L248.0 181.3 L250.0 182.4 L252.0 183.7 L254.0 185.2 L256.0 186.8 L258.0 188.5 L260.0 190.4 L262.0 192.3 L264.0 194.4 L266.0 196.5 L268.0 198.7 L270.0 201.0 L272.0 203.3 L274.0 205.6 L276.0 208.0 L278.0 210.4 L280.0 212.7 L282.0 215.0 L284.0 217.3 L286.0 219.5 L288.0 221.6 L290.0 223.7 L292.0 225.6 L294.0 227.5 L296.0 229.2 L298.0 230.8 L300.0 232.3 L302.0 233.6 L304.0 234.7 L306.0 235.7 L308.0 236.5 L310.0 237.2 L312.0 237.6 L314.0 237.9 L316.0 238.0 L318.0 237.9 L320.0 237.6 L322.0 237.2 L324.0 236.5 L326.0 235.7 L328.0 234.7 L330.0 233.6 L332.0 232.3 L334.0 230.8 L336.0 229.2 L338.0 227.5 L340.0 225.6 L342.0 223.7 L344.0 221.6 L346.0 219.5 L348.0 217.3 L350.0 215.0 L352.0 212.7 L354.0 210.4 L356.0 208.0"/>
+          <path class="w-line w-dist" pathLength="1" d="M36.0 208.0 L38.0 205.9 L40.0 204.2 L42.0 203.0 L44.0 202.5 L46.0 202.7 L48.0 203.3 L50.0 204.3 L52.0 205.0 L54.0 205.1 L56.0 204.2 L58.0 202.0 L60.0 198.4 L62.0 193.5 L64.0 187.6 L66.0 181.0 L68.0 174.4 L70.0 168.4 L72.0 163.6 L74.0 160.5 L76.0 159.4 L78.0 160.5 L80.0 163.6 L82.0 168.4 L84.0 174.4 L86.0 181.0 L88.0 187.6 L90.0 193.5 L92.0 198.4 L94.0 202.0 L96.0 204.2 L98.0 205.1 L100.0 205.0 L102.0 204.3 L104.0 203.3 L106.0 202.7 L108.0 202.5 L110.0 203.0 L112.0 204.2 L114.0 205.9 L116.0 208.0 L118.0 210.1 L120.0 211.8 L122.0 213.0 L124.0 213.5 L126.0 213.3 L128.0 212.7 L130.0 211.7 L132.0 211.0 L134.0 210.9 L136.0 211.8 L138.0 214.0 L140.0 217.6 L142.0 222.5 L144.0 228.4 L146.0 235.0 L148.0 241.6 L150.0 247.6 L152.0 252.4 L154.0 255.5 L156.0 256.6 L158.0 255.5 L160.0 252.4 L162.0 247.6 L164.0 241.6 L166.0 235.0 L168.0 228.4 L170.0 222.5 L172.0 217.6 L174.0 214.0 L176.0 211.8 L178.0 210.9 L180.0 211.0 L182.0 211.7 L184.0 212.7 L186.0 213.3 L188.0 213.5 L190.0 213.0 L192.0 211.8 L194.0 210.1 L196.0 208.0 L198.0 205.9 L200.0 204.2 L202.0 203.0 L204.0 202.5 L206.0 202.7 L208.0 203.3 L210.0 204.3 L212.0 205.0 L214.0 205.1 L216.0 204.2 L218.0 202.0 L220.0 198.4 L222.0 193.5 L224.0 187.6 L226.0 181.0 L228.0 174.4 L230.0 168.4 L232.0 163.6 L234.0 160.5 L236.0 159.4 L238.0 160.5 L240.0 163.6 L242.0 168.4 L244.0 174.4 L246.0 181.0 L248.0 187.6 L250.0 193.5 L252.0 198.4 L254.0 202.0 L256.0 204.2 L258.0 205.1 L260.0 205.0 L262.0 204.3 L264.0 203.3 L266.0 202.7 L268.0 202.5 L270.0 203.0 L272.0 204.2 L274.0 205.9 L276.0 208.0 L278.0 210.1 L280.0 211.8 L282.0 213.0 L284.0 213.5 L286.0 213.3 L288.0 212.7 L290.0 211.7 L292.0 211.0 L294.0 210.9 L296.0 211.8 L298.0 214.0 L300.0 217.6 L302.0 222.5 L304.0 228.4 L306.0 235.0 L308.0 241.6 L310.0 247.6 L312.0 252.4 L314.0 255.5 L316.0 256.6 L318.0 255.5 L320.0 252.4 L322.0 247.6 L324.0 241.6 L326.0 235.0 L328.0 228.4 L330.0 222.5 L332.0 217.6 L334.0 214.0 L336.0 211.8 L338.0 210.9 L340.0 211.0 L342.0 211.7 L344.0 212.7 L346.0 213.3 L348.0 213.5 L350.0 213.0 L352.0 211.8 L354.0 210.1 L356.0 208.0"/>
+          <rect x="36" y="276" width="16" height="16" fill="#faa11b"/>
+          <text class="bt bt-amber" x="62" y="289">PAID FOR, DOES NO WORK</text>
+          <path class="b-arrow" d="M366 210 C396 210 392 168 420 168" fill="none"/>
+          <path class="b-head" d="M414 160 L426 168 L414 176 Z"/>
+          <g class="b-meter" transform="translate(484 168)">
+            <circle r="56" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+            <path d="M-40 28 A48 48 0 0 1 40 28" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="8"/>
+            <path d="M12 -46 A48 48 0 0 1 40 28" fill="none" stroke="#faa11b" stroke-width="8"/>
+            <g class="b-needle"><line x1="0" y1="8" x2="0" y2="-40" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/></g>
+            <circle r="6" fill="#fff"/>
+            <text class="bt" x="0" y="48" text-anchor="middle">DEMAND</text>
+          </g>
+          <text class="bt bt-big" x="484" y="262" text-anchor="middle">THE BILL</text>
+        </svg>
+      </div>
+    </div>
+    <div class="proofline rv">
+      <span class="big">8.6%</span>
+      <p><strong>Las Vegas Hotel &amp; Casino cut its electrical demand 8.6 percent by correcting distortion alone</strong>, independently metered. It came from resolving that one issue by itself.</p>
+    </div>
+    <span class="tag-k rv" style="margin-top:clamp(28px,4vw,40px)">Where distortion lands</span>
+    <div class="triple" style="margin-top:14px">
       <div class="rv">
         <span class="chip">1</span>
         <h3>The bill</h3>
@@ -616,6 +720,19 @@
       <div class="lever rv">
         <span class="name">Cool</span>
         <p>We restore and stage the chillers and air handlers, add variable speed drives to fans and pumps, and match the outside air a smoking floor requires to the crowd, without compromising air quality. The air stays as clean as you require. What changes is what it costs to make it so.</p>
+      </div>
+      <div class="coolfeat rv">
+        <h3>Heating and cooling can be half your bill. We start there.</h3>
+        <p>Your chillers and air handlers run every hour of the year, so cooling is the first place the savings are.</p>
+        <p class="coolfeat__q">Watch the whole method in six minutes.</p>
+        <div class="film-inline">
+          <button type="button" class="film-inline__facade" data-film-inline aria-label="Play the six minute method film">
+            <img src="assets/img/film-cover.jpg" alt="" loading="lazy" width="1280" height="720">
+            <span class="film-inline__scrim" aria-hidden="true"></span>
+            <span class="film-inline__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="film-inline__meta" aria-hidden="true">The method &middot; 6 min</span>
+          </button>
+        </div>
       </div>
       <div class="lever rv">
         <span class="name">Clean</span>
@@ -682,7 +799,7 @@
     </div>
     <div class="proof-block rv" style="margin-top:clamp(28px,4vw,40px)">
       <h3>The precedent</h3>
-      <p class="prose">The technologies we deploy have been measured at more than 200 named sites. Simon Property Group measured a 21.1 percent HVAC energy reduction with a roughly twelve month payback, Anheuser-Busch 19.2 percent, and DHL 15 percent. In hospitality, distortion correction measured an 8.59 percent peak kilowatt reduction at a Las Vegas hotel and casino under independent panel metering. These are technology results at the sites named.</p>
+      <p class="prose">Measured at more than 200 named sites. Each result below is the technology at that site, under its own conditions.</p>
       <div class="ledger" id="ledger" aria-hidden="true">
         <div class="ledger__col" style="--dur:75s"></div>
         <div class="ledger__col" style="--dur:93s"></div>
@@ -750,6 +867,27 @@
           <li>Cooling recovery runs from 20 percent, the floor, to 50 percent at the upper end.</li>
           <li>Peak shaving is a 5 percent cut of an assumed 3,700 to 7,300 kW peak. Power quality is not counted.</li>
         </ul>
+      </details>
+    </div>
+
+    <div class="yes">
+      <h2 class="rv">Everyone who has to say yes.</h2>
+      <p class="rv yes__lead">Each decision maker needs a different answer. Forward this page to the person whose yes you need next.</p>
+      <details class="gate rv">
+        <summary><span class="plus" aria-hidden="true">+</span>General Manager</summary>
+        <div class="gate__body"><p>The floor, the air, and the power stay exactly as they are, so the guest experience does not change. The work is scheduled around the floor. The project is paid for from savings.</p></div>
+      </details>
+      <details class="gate rv">
+        <summary><span class="plus" aria-hidden="true">+</span>Facilities and Chief Engineer</summary>
+        <div class="gate__body"><p>The work happens on the chillers, air handlers, and electrical room you already run, with comfort and air quality held. LionHeart already maintains your generators, so the technicians on site are not strangers. Cleaner coils, cooler panels, and fewer nuisance trips mean fewer service calls.</p></div>
+      </details>
+      <details class="gate rv">
+        <summary><span class="plus" aria-hidden="true">+</span>Finance and Controller</summary>
+        <div class="gate__body"><p>No capital outlay to start; the project is paid for from savings. The estimate above is planned at the floor of every range and is replaced by your own bills in step one. Federal storage tax credits and utility incentives are tailwinds where they apply.</p></div>
+      </details>
+      <details class="gate rv">
+        <summary><span class="plus" aria-hidden="true">+</span>Corporate and ownership approval</summary>
+        <div class="gate__body"><p>Results are measured under IPMVP, the international measurement and verification protocol, on technology measured at more than 200 named sites. The savings are verified numbers, not a marketing claim. LionHeart is already the power partner on site.</p></div>
       </details>
     </div>
   </div>
@@ -944,44 +1082,58 @@
   }
 
 
+  /* the film: the facade becomes the player, in place */
+  (function(){
+    const f=document.querySelector('[data-film-inline]');
+    if(!f)return;
+    f.addEventListener('click',()=>{
+      const holder=f.closest('.film-inline'),fr=document.createElement('iframe');
+      fr.src='https://fast.wistia.net/embed/iframe/n765rk6v4z?autoPlay=true&playbar=true&dnt=true';
+      fr.allow='autoplay; fullscreen';
+      fr.setAttribute('allowfullscreen','');
+      fr.title='How we cut your energy bill, 6 minutes';
+      holder.replaceChildren(fr);
+    });
+  })();
+
   const RECORD=[
     { t:"Hospitality and casino", rows:[
-      ["8.59% kW","Las Vegas Hotel & Casino","Las Vegas, NV","Independent panel metering"],
-      ["14% kWh","Caribe Resort","Orange Beach, AL","Facilities director measured"],
-      ["13.5% kWh","Hilton Garden Inn","Marietta, GA","12 month study"],
-      ["12 to 27%","UAE program","14 institutions incl. Sheraton Jumeirah","Cooling, field studies"]
+      ["8.59% kW","Las Vegas Hotel & Casino","Hospitality · Las Vegas, NV","Independent panel metering"],
+      ["14% kWh","Caribe Resort","Hospitality · Orange Beach, AL","Facilities-director measured"],
+      ["13.5% kWh","Hilton Garden Inn","Hospitality · Marietta, GA","12-month study"],
+      ["12 to 27%","UAE program","14 institutions incl. Sheraton Jumeirah, Flora Grand","14-institution deployment"]
     ]},
     { t:"Whole building", rows:[
-      ["49.2%","AZ Ford Dealership","Arizona dealership","Project total, power quality, HVAC, lighting"],
-      ["27% avg","City of Rainsville","Municipal, Alabama","First year monitored"],
-      ["+50% / +2%","Commercial Bottling Plant","Upper Midwest","50% more output, 2% more cost"]
+      ["49.2%","AZ Ford Dealership","Auto dealership · Arizona","Documented project total (power quality + HVAC + lighting)"],
+      ["27% avg","City of Rainsville","Municipal · Alabama","First-year monitored, power conditioning + LED"],
+      ["+50% / +2%","Commercial Bottling Plant","Manufacturing · Upper Midwest","Growth-adjusted net cost study (50% more output, 2% more cost)"]
     ]},
     { t:"HVAC and cooling", rows:[
-      ["33%","Durham College","Oshawa, ON","16,851 data points"],
-      ["27.75% avg","City of Windsor","Windsor, ON","Utility verified"],
-      ["21.1% kWh","Simon Property Group","Jersey Gardens mall, NJ","IPMVP, 12 month payback"],
-      ["19.2% RTU","Anheuser-Busch","Distribution, United States","20 month payback"],
-      ["20 to 35%","Trebor International","Windsor, ON","P.E. licensed, 6 jurisdictions"],
-      ["284% ROI","Men's Wearhouse","Retail, United States","12.5 month payback"],
-      ["24%+ / yr","McDonald's franchisee","Quick-serve, United States","Annual study"],
-      ["20% avg","AT&T Mobility / SDG&E","9 cell sites, San Diego, CA","Data loggers"],
-      ["19.5 to 21.6%","Verizon Network Services","Dallas, TX","P.E. authored"],
-      ["22%","Bashas' Supermarket","Gold Canyon, AZ","Grocery study"],
-      ["19.4% / yr","Domino's Store 6711","Quick-serve, United States","2 year study"],
-      ["15 to 39%","Multi-country program","South Africa, Pakistan, Indonesia, Puerto Rico","Field studies"],
-      ["15 to 21%","Bangladesh enterprise","56 units, GraphicPeople, BEXIMCO","Enterprise deployment"],
-      ["15% eff.","DHL","Ammonia refrigeration, United States","13.8 month payback"],
-      ["200 sites","Airtel Bangladesh","Telecom, nationwide","3 month pilot"],
-      ["5-mo payback","Italgas Toscana","Heat pump, Italy","Field trial"]
+      ["33%","Durham College","Education / research · Oshawa, ON","16,851 data points; ANOVA / t-test"],
+      ["27.75% avg","City of Windsor","Municipal · Windsor, ON","Utility verified; provincial program approved"],
+      ["21.1% kWh","Simon Property Group","Retail, Jersey Gardens mall · Elizabeth, NJ","IPMVP; $41,473/yr, 12-mo payback"],
+      ["19.2% RTU","Anheuser-Busch (Mitchell Distributing)","Distribution · United States","20-mo payback; 904% lifetime ROI"],
+      ["20 to 35%","Trebor International","Manufacturing · Windsor, ON","P.E. licensed in 6 jurisdictions"],
+      ["284% ROI","Men's Wearhouse (Tailored Brands)","Retail · United States","Dual-RTU, 12.5-mo payback"],
+      ["24%+ / yr","McDonald's franchisee","Quick-serve · United States","Annual study"],
+      ["20% avg","AT&T Mobility / SDG&E","Telecom, 9 cell sites · San Diego, CA","Data loggers; utility-engineer co-authored"],
+      ["19.5 to 21.6%","Verizon Network Services","Telecom · Dallas, TX","P.E.-authored; approved for deployment"],
+      ["22%","Bashas' Supermarket","Grocery · Gold Canyon, AZ","Grocery vertical study"],
+      ["19.4% / yr","Domino's Store 6711","Quick-serve · United States","2-year study"],
+      ["15 to 39%","Multi-country program","South Africa · Pakistan · Indonesia · Puerto Rico","Field studies per country"],
+      ["15 to 21%","Bangladesh enterprise","56 units · GraphicPeople (WPP) · BEXIMCO · IDLC Finance","Enterprise deployment"],
+      ["15% eff.","DHL (ammonia refrigeration)","Logistics · United States","Compressor study, 13.8-mo payback"],
+      ["200 sites","Airtel Bangladesh","Telecom, 200 BTS sites · Nationwide","3-month pilot, no performance issues"],
+      ["5-mo payback","Italgas Toscana","Utility, heat pump · Italy","Field efficiency trial"]
     ]},
     { t:"Distortion correction", rows:[
-      ["24.0%","Edward Hospital","Naperville, IL","Metered, $84,270 in 9 months"],
-      ["15% kWh","Henkel","Richmond, VA","Beat corporate goal"],
-      ["15.0% kWh","Buffalo Rock","Birmingham, AL","12 month study"],
-      ["12.9% kWh","Hi-Noon (Sinclair)","Missoula, MT","Utility verified"],
-      ["13.0% kWh","Planet Fitness","Birmingham, AL","Third-party study"],
-      ["~1 yr payback","Pacific Steel","Montana","PE-sealed analysis"],
-      ["40% motor","Sequoyah Elementary","Tennessee","14 days data-logged"]
+      ["24.0%","Edward Hospital","Hospital · Naperville, IL","Power factor + voltage conditioning + line reactors; metered, $84,270 / 9 mo"],
+      ["15% kWh","Henkel","Manufacturing · Richmond, VA","Exceeded corporate sustainability goal"],
+      ["15.0% kWh","Buffalo Rock","Manufacturing · Birmingham, AL","12-month study"],
+      ["12.9% kWh","Hi-Noon (Sinclair)","C-store / fuel · Missoula, MT","Verified by the serving utility"],
+      ["13.0% kWh","Planet Fitness","Fitness · Birmingham, AL","Third-party study"],
+      ["~1 yr payback","Pacific Steel","Manufacturing · Montana","PE-sealed technoeconomic analysis"],
+      ["40% motor","Sequoyah Elementary","Education · Tennessee","Data-logged 14 days, 9.5-mo ROI"]
     ]}
   ];
   (function(){
