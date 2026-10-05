@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Horseshoe Indianapolis Energy Savings | LionHeart Critical Power Services in partnership with Energy+</title>
+<meta name="description" content="An energy savings proposal for Horseshoe Indianapolis. Prepared by LionHeart Critical Power Services in partnership with Energy+.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  /* ONE place to change the contact details. Everything on the page reads from here. */
+  const CONTACT={
+    name:'Mark Schmaltz',
+    title:'Account Executive, LionHeart Critical Power Services',
+    phone:'(888) 888-8888',
+    email:'Mark.Schmaltz@LHCPS.com'
+  };
+</script>
+<style>
+  :root{
+    --blue:#0f4c91; --navy:#0d2a70; --amber:#faa11b;
+    --bg:#ffffff; --bg-alt:#f5f5f5; --panel:#ffffff;
+    --ink:#262626; --body-c:#2f2f2f; --mut:#555553; --cap:#686868;
+    --line:#e6e6e6; --line-blue:rgba(15,76,145,.35);
+    --ease:cubic-bezier(.22,1,.36,1);
+    --disp:'Barlow Condensed','Arial Narrow',sans-serif;
+    --sans:'Nunito Sans',system-ui,sans-serif;
+    --mono:'Spline Sans Mono',ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--body-c);
+    font-family:var(--sans);
+    font-size:20px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:var(--disp);color:var(--ink);font-weight:700;text-transform:uppercase;letter-spacing:.012em;text-wrap:balance}
+  p{text-wrap:pretty}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+  .prose{max-width:66ch}
+  a{color:var(--blue)}
+
+  /* ---------- header ---------- */
+  .topline{height:6px;background:var(--blue)}
+  header{padding:clamp(16px,2.6vw,24px) 0;border-bottom:1px solid var(--line);background:#fff}
+  .header-row{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .lockup{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .lockup .lh{height:46px;width:auto;display:block}
+  .lockup .partner{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-weight:600;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);border-left:1px solid var(--line);padding-left:18px}
+  .lockup .partner img{height:22px;width:auto;display:block}
+  .prepared{font-family:var(--disp);font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:700}
+  @media (max-width:640px){
+    header{padding:12px 0}
+    .header-row{flex-wrap:nowrap;gap:12px;align-items:center}
+    .lockup .lh{height:34px}
+    .lockup .partner{display:none}
+    .prepared{font-size:13px;letter-spacing:.1em;text-align:right;flex-shrink:0}
+  }
+
+  /* ---------- hero: the 24 hour dial ---------- */
+  .hero{background:var(--navy);color:#fff;padding:clamp(48px,8vw,104px) 0}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(28px,5vw,64px);align-items:center}
+  .hero h1{font-size:clamp(2.3rem,5.4vw,4rem);line-height:1.06;max-width:20ch;color:#fff}
+  .hero h1 em{font-style:normal;color:var(--amber)}
+  .hero .lead{margin-top:clamp(22px,3.2vw,34px);font-size:clamp(1.15rem,2.1vw,1.38rem);line-height:1.55;color:#fff;max-width:52ch}
+  .hero .addressee{margin-bottom:22px;font-family:var(--disp);font-weight:600;font-size:17px;letter-spacing:.16em;text-transform:uppercase;color:#cfdbf2}
+  .hero .addressee::after{content:"";display:block;width:64px;height:4px;background:var(--amber);margin-top:14px}
+  .dial{width:100%;max-width:430px;height:auto;display:block;margin:0 auto}
+  .dial .tk{stroke:rgba(255,255,255,.4);stroke-width:2}
+  .dial .tk.maj{stroke:#fff;stroke-width:3}
+  .dial .h{fill:none;stroke:var(--amber);stroke-width:16}
+  .dial .lbl{font-family:var(--disp);font-weight:600;font-size:18px;letter-spacing:.1em;fill:#cfdbf2}
+  .dial .d-big{font-family:var(--disp);font-weight:700;font-size:96px;fill:#fff;font-variant-numeric:tabular-nums}
+  .dial .d-sub{font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:.16em;fill:#fff}
+  .dial .d-hand{transform-box:view-box;transform-origin:200px 200px}
+  .dial .d-hand circle{fill:#fff}
+  @media (prefers-reduced-motion:no-preference){
+    .dial .h{animation:hourOn .55s var(--ease) backwards;animation-delay:calc(var(--i) * 85ms + .2s)}
+    .dial .d-hand{animation:handSweep 72s linear infinite}
+  }
+  @keyframes hourOn{from{opacity:.1}to{opacity:1}}
+  @keyframes handSweep{to{transform:rotate(360deg)}}
+  @media (max-width:820px){
+    .hero-grid{grid-template-columns:1fr}
+    .dial{max-width:300px}
+  }
+
+  /* full bleed illustrated bands (custom SVG) */
+  .band{margin:0;background:var(--navy);color:#fff;padding:clamp(28px,5vw,52px) 0 clamp(22px,4vw,34px)}
+  .band svg{width:100%;height:auto;display:block;max-width:1060px;margin:0 auto}
+  .band figcaption{margin-top:14px;font-family:var(--disp);font-weight:700;font-size:clamp(20px,2.4vw,30px);letter-spacing:.06em;text-transform:uppercase}
+  .band .illus{display:block;margin-top:6px;font-family:var(--sans);font-size:14px;letter-spacing:0;text-transform:none;font-weight:400;color:#cfdbf2}
+  .band .ax{stroke:rgba(255,255,255,.35);stroke-width:1.5}
+  .band .axt{font-family:var(--disp);font-weight:600;font-size:15px;letter-spacing:.08em;fill:#cfdbf2}
+  .band .ln-casino{fill:none;stroke:var(--amber);stroke-width:5}
+  .band .ln-office{fill:none;stroke:#fff;stroke-width:3.5;stroke-dasharray:1;}
+  .band .tag{font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:.06em}
+
+  /* act break kicker: blue rule + caps, three uses total */
+  .act{padding-top:clamp(48px,7vw,90px)}
+  .act-label{display:flex;align-items:center;gap:16px;margin-bottom:clamp(28px,4vw,42px)}
+  .act-label .rule{flex:0 0 44px;height:4px;background:var(--blue)}
+  .act-label span{font-family:var(--disp);font-size:17px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);font-weight:700}
+
+  section{padding:clamp(38px,5.5vw,66px) 0}
+  section h2{font-size:clamp(1.8rem,3.8vw,2.7rem);line-height:1.1;margin-bottom:clamp(18px,3vw,28px);max-width:26ch}
+  section p + p{margin-top:1.05em}
+  .alt{background:var(--bg-alt)}
+
+  .figure-note{font-size:18px;color:var(--body-c);margin-top:18px;max-width:62ch}
+
+  /* insight stat */
+  .stat-pull{margin:clamp(30px,5vw,46px) 0;padding:24px 0;border-top:4px solid var(--blue);border-bottom:1px solid var(--line);
+    display:flex;gap:clamp(20px,4vw,44px);align-items:baseline;flex-wrap:wrap}
+  .stat-pull .big{font-family:var(--mono);font-weight:600;font-size:clamp(2.6rem,6vw,4rem);color:var(--blue);line-height:1;white-space:nowrap}
+  .stat-pull .why{max-width:46ch;color:var(--body-c);font-size:1.15rem;line-height:1.5}
+
+  .chip{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--blue);color:#fff;
+    font-family:var(--disp);font-weight:700;font-size:21px;flex:0 0 36px}
+
+  .js .band .ln-casino,.js .band .ln-office{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.8s var(--ease) .2s}
+  .js .band.in .ln-casino,.js .band.in .ln-office{stroke-dashoffset:0}
+  .js .band .ln-office{transition-delay:.5s}
+
+  /* villain triple */
+  .triple{margin-top:clamp(34px,5vw,52px);display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .triple > div{background:var(--panel);padding:clamp(22px,3.5vw,34px)}
+  .triple h3{font-size:1.4rem;line-height:1.15;margin:14px 0 10px;letter-spacing:.03em}
+  .triple p{font-size:1.05rem;line-height:1.6;color:var(--body-c)}
+  .cell-viz{margin:14px 0 2px}
+  .cell-viz svg{width:100%;max-width:210px;height:auto;display:block}
+  .viz-meter .m-needle{transform-origin:60px 56px;animation:vizNeedle 7s cubic-bezier(.45,0,.25,1) infinite}
+  @keyframes vizNeedle{0%{transform:rotate(52deg)}38%{transform:rotate(-52deg)}68%{transform:rotate(-52deg)}88%{transform:rotate(52deg)}100%{transform:rotate(52deg)}}
+  .viz-bars rect{fill:rgba(85,85,83,.4)}
+  .viz-bars .b-peak{fill:#0f4c91;transform-box:fill-box;transform-origin:bottom;animation:vizPeak 6s cubic-bezier(.45,0,.25,1) infinite}
+  @keyframes vizPeak{0%{transform:scaleY(1)}32%{transform:scaleY(.5)}70%{transform:scaleY(.5)}90%{transform:scaleY(1)}100%{transform:scaleY(1)}}
+  .viz-bars .b-ghost{fill:none;stroke:#0f4c91;stroke-width:1.5;stroke-dasharray:3 3;animation:vizGhost 6s linear infinite}
+  @keyframes vizGhost{0%{opacity:0}32%{opacity:.7}70%{opacity:.7}88%{opacity:0}100%{opacity:0}}
+  .viz-life .l-ext{transform-box:fill-box;transform-origin:left;animation:vizExt 8s cubic-bezier(.45,0,.25,1) infinite}
+  @keyframes vizExt{0%{transform:scaleX(0)}35%{transform:scaleX(1)}75%{transform:scaleX(1)}90%{transform:scaleX(0)}100%{transform:scaleX(0)}}
+  .viz-life .l-txt{animation:vizTxt 8s linear infinite}
+  @keyframes vizTxt{0%{opacity:0}35%{opacity:0}45%{opacity:1}75%{opacity:1}85%{opacity:0}100%{opacity:0}}
+  .cell-cause,.cell-back{margin-top:12px;font-size:1.02rem;line-height:1.55;color:var(--body-c)}
+  .cell-cause strong,.cell-back strong{display:block;font-family:var(--disp);text-transform:uppercase;letter-spacing:.08em;font-size:16px;font-weight:700;color:var(--mut);margin-bottom:2px}
+  .cell-back strong{color:var(--blue)}
+  .h2-flip{color:var(--blue)}
+
+  /* prescription list */
+  .levers{margin-top:clamp(28px,4vw,42px);display:flex;flex-direction:column}
+  .lever{display:grid;grid-template-columns:minmax(190px,260px) 1fr;gap:clamp(16px,3vw,40px);padding:clamp(20px,3vw,26px) 0;border-top:1px solid var(--line)}
+  .lever:last-child{border-bottom:1px solid var(--line)}
+  .lever .name{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--ink);font-size:1.3rem;line-height:1.2}
+  .lever p{font-size:1.02rem;color:var(--body-c);max-width:58ch}
+  @media (max-width:640px){.lever{grid-template-columns:1fr;gap:8px}}
+  .lever{transition:background .3s var(--ease)}
+  .lever:hover{background:rgba(15,76,145,.04)}
+
+  /* outlined callout */
+  .combined{margin-top:clamp(30px,5vw,46px);padding:clamp(24px,4vw,38px);border:3px solid var(--blue);background:#fff}
+  .combined h3{font-size:clamp(1.4rem,3vw,2rem);line-height:1.12;max-width:30ch;margin-bottom:14px}
+  .combined p{color:var(--body-c);max-width:60ch}
+
+  [data-count]{font-variant-numeric:tabular-nums}
+
+  /* the savings estimator */
+  .equation{margin:clamp(30px,5vw,48px) 0 0;border:1px solid var(--line);background:#fff;padding:clamp(20px,3.5vw,36px)}
+  .eq-intro{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--ink);font-size:clamp(1.3rem,2.6vw,1.7rem);margin-bottom:clamp(16px,2.5vw,24px)}
+  .eq-controls{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,36px);align-items:start}
+  @media (max-width:760px){.eq-controls{grid-template-columns:1fr;gap:20px}}
+  .eq-ctl label{display:block;font-family:var(--disp);font-size:21px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);font-weight:700;margin-bottom:12px}
+  .eq-ctl label strong{color:var(--blue);font-size:27px}
+  .eq-ctl input[type=range]{-webkit-appearance:none;appearance:none;width:100%;max-width:520px;height:34px;background:transparent;display:block;cursor:pointer}
+  .eq-ctl input[type=range]::-webkit-slider-runnable-track{height:12px;background:#e6e6e6;border:1px solid #d3d3d3}
+  .eq-ctl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;background:var(--blue);border:3px solid #fff;border-radius:50%;box-shadow:0 1px 5px rgba(0,0,0,.4);margin-top:-8px}
+  .eq-ctl input[type=range]::-moz-range-track{height:12px;background:#e6e6e6;border:1px solid #d3d3d3}
+  .eq-ctl input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--blue);border:3px solid #fff;border-radius:50%;box-shadow:0 1px 5px rgba(0,0,0,.4)}
+  .eq-ctl input[type=range]:focus-visible{outline:3px solid var(--amber);outline-offset:4px}
+  .eq-ends{display:flex;justify-content:space-between;gap:12px;max-width:520px;margin-top:6px;font-family:var(--disp);font-weight:600;font-size:16px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+  .eq-math{margin-top:clamp(18px,3vw,28px);border-top:1px solid var(--line);padding-top:clamp(16px,2.5vw,24px);display:grid;gap:10px;font-family:var(--mono);font-size:clamp(14px,1.9vw,17px);color:var(--ink);line-height:1.5}
+  .eq-math b{font-weight:600;color:var(--blue)}
+  .eq-math .tot{margin-top:6px;padding-top:12px;border-top:2px solid var(--ink)}
+  .eq-visual{display:flex;align-items:center;gap:clamp(16px,3vw,30px);flex-wrap:wrap;border-top:1px solid var(--line);margin-top:clamp(16px,2.5vw,24px);padding-top:clamp(16px,2.5vw,24px)}
+  .eq-hours{display:grid;grid-template-columns:repeat(12,1fr);gap:5px;flex:1 1 240px;max-width:360px}
+  .eq-hours span{display:block;aspect-ratio:1;background:var(--amber)}
+  .js .eq-hours span{opacity:0;transform:scale(.3);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+  .js .equation.in .eq-hours span{opacity:1;transform:none}
+  .eq-val{flex:1 1 260px}
+  .eq-big{font-family:var(--mono);font-weight:600;font-size:clamp(1.9rem,4.4vw,3rem);color:var(--blue);line-height:1.05;display:block;font-variant-numeric:tabular-nums}
+  .eq-label{display:block;font-size:1.2rem;color:var(--ink);max-width:30ch;line-height:1.4;margin-top:6px}
+  .eq-fine{margin-top:16px;font-size:15px;color:var(--cap);line-height:1.5}
+
+  /* the resilience support */
+  .support{margin-top:clamp(30px,5vw,46px)}
+  .support h3{font-size:clamp(1.4rem,3vw,2rem);line-height:1.12;margin-bottom:12px;max-width:30ch}
+
+  /* proof */
+  .proof-block + .proof-block{margin-top:clamp(28px,4vw,40px)}
+  .proof-block h3{font-size:1.45rem;color:var(--blue);margin-bottom:10px;letter-spacing:.05em}
+
+  /* drawn moments */
+  .js .act-label .rule{transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease) .15s}
+  .js .act-label.in .rule{transform:scaleX(1)}
+
+  /* plan */
+  .steps{margin-top:clamp(28px,4vw,42px);display:flex;flex-direction:column}
+  .step{display:grid;grid-template-columns:36px 1fr;gap:clamp(16px,3vw,28px);padding:clamp(20px,3vw,28px) 0;border-top:1px solid var(--line)}
+  .step:last-child{border-bottom:1px solid var(--line)}
+  .step h3{font-size:1.4rem;line-height:1.15;margin-bottom:8px;letter-spacing:.03em}
+  .step p{font-size:1.02rem;color:var(--body-c);max-width:58ch}
+
+  .guarantee{margin-top:clamp(36px,6vw,56px);text-align:center;padding:clamp(32px,5.5vw,52px) clamp(20px,4vw,48px);border:3px solid var(--blue);background:#fff}
+  .guarantee h2{margin:0 auto 12px;max-width:24ch;font-size:clamp(1.7rem,3.4vw,2.4rem)}
+  .guarantee p{color:var(--body-c);max-width:54ch;margin:0 auto}
+
+  /* cta: the blue band */
+  .cta{padding:clamp(52px,8vw,92px) 0;background:var(--blue);color:#fff}
+  .cta .bar{display:block;width:64px;height:5px;background:var(--amber);margin-bottom:22px}
+  .cta h2{color:#fff;font-size:clamp(1.9rem,4vw,2.8rem);max-width:22ch}
+  .cta .tagline{margin-top:10px;font-family:var(--disp);font-size:clamp(1.15rem,2vw,1.35rem);letter-spacing:.14em;text-transform:uppercase;color:#fff;font-weight:600}
+  .cta .expl{margin-top:clamp(20px,3vw,28px);color:#fff;max-width:60ch}
+  .cta .contact{margin-top:clamp(26px,4vw,38px);display:flex;gap:16px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:16px 32px;border-radius:50px;font-family:var(--disp);font-size:20px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-weight:700;transition:all .25s var(--ease)}
+  .btn-solid{background:var(--amber);color:var(--navy)}
+  .btn-solid:hover{background:#ffb441}
+  .btn-ghost{border:2px solid rgba(255,255,255,.75);color:#fff}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+  .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .cta .who{margin-top:24px;color:#fff;font-size:18px}
+  .cta .logos{margin-top:36px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .cta .logos img.lh{height:48px;width:auto;display:block}
+  .cta .logos .sep{font-family:var(--disp);font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#cfdbf2;font-weight:600}
+  .cta .logos img.ep{height:24px;width:auto;display:block}
+
+  footer{padding:32px 0 40px;background:#fff;border-top:1px solid var(--line)}
+  footer p{font-size:15px;line-height:1.6;color:var(--mut);max-width:84ch}
+  footer .fine + .fine{margin-top:10px}
+
+  /* the living ledger */
+  .ledger{position:relative;margin-top:26px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;height:24rem;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.6rem 0}
+  .ledger__col{display:flex;flex-direction:column;gap:.6rem;animation:ledgerDrift var(--dur,220s) linear infinite}
+  .ledger:hover .ledger__col{animation-play-state:paused}
+  .ledger__card{background:#fff;border:1px solid var(--line);padding:.8rem .95rem}
+  .ledger__card .r{display:block;font-family:var(--mono);font-weight:600;font-size:1.05rem;color:var(--blue)}
+  .ledger__card .n{display:block;margin-top:.2rem;font-weight:700;color:var(--ink);font-size:.95rem;line-height:1.35}
+  .ledger__card .w{display:block;margin-top:.15rem;font-size:.82rem;color:var(--mut);line-height:1.4}
+  @keyframes ledgerDrift{to{transform:translateY(-50%)}}
+  @media (max-width:820px){.ledger{grid-template-columns:1fr 1fr}.ledger__col:nth-child(3){display:none}}
+  @media (max-width:540px){.ledger{grid-template-columns:1fr;height:20rem}.ledger__col:nth-child(2){display:none}}
+  .quiet{font-size:17px;color:var(--body-c);margin-top:14px}
+  .textlink{background:none;border:none;padding:0;font:inherit;color:var(--blue);text-decoration:underline;cursor:pointer}
+
+  /* the full record dialog */
+  .sheet{border:none;padding:0;width:min(64rem,94vw);max-height:86vh;margin:auto;background:#fff;color:var(--body-c);overflow:auto}
+  .sheet::backdrop{background:rgba(13,42,112,.6)}
+  .sheet__bar{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.4rem;border-bottom:3px solid var(--blue);position:sticky;top:0;background:#fff;z-index:1}
+  .sheet__bar h2{font-size:1.5rem;margin:0}
+  .sheet__close{background:none;border:none;font-size:2rem;line-height:1;cursor:pointer;color:var(--mut)}
+  .sheet__body{padding:1.2rem 1.4rem}
+  .sheet__note{padding:0 1.4rem 1.2rem;font-size:.85rem;color:var(--mut)}
+  .rec-group{margin:0 0 2.2rem}
+  .rec-group h3{font-family:var(--disp);font-size:1.1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);padding-bottom:.5rem;border-bottom:2px solid var(--ink)}
+  .rec-group ul{list-style:none;margin:0;padding:0}
+  .rec-group li{display:grid;grid-template-columns:7.5rem 1fr minmax(0,16rem);gap:.3rem 1.2rem;padding:.65rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+  .rec-group .r{font-family:var(--mono);font-weight:600;color:var(--blue)}
+  .rec-group .n b{display:block;font-weight:700;color:var(--ink)}
+  .rec-group .n span{color:var(--mut)}
+  .rec-group .b{color:var(--body-c)}
+  @media (max-width:640px){.rec-group li{grid-template-columns:5.5rem 1fr}.rec-group .b{grid-column:2}}
+
+  /* motion */
+  .js .rv{opacity:0;transform:translateY(16px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+  .js .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .viz-meter .m-needle{animation:none;transform:rotate(-52deg)}
+    .viz-bars .b-peak{animation:none;transform:scaleY(.5)}
+    .viz-bars .b-ghost{animation:none;opacity:.7}
+    .viz-life .l-ext{animation:none;transform:scaleX(1)}
+    .viz-life .l-txt{animation:none;opacity:1}
+    .js .rv{opacity:1;transform:none;transition:none}
+    .ledger__col{animation:none}
+    .dial .h,.dial .d-hand{animation:none}
+    .js .act-label .rule{transform:none;transition:none}
+    .js .band .ln-casino,.js .band .ln-office{stroke-dashoffset:0;transition:none}
+    .viz-loss .v-loss{animation:none;transform:scaleX(.2)}
+    .viz-trips .t-call{animation:none;opacity:0}
+    .viz-years .y-add{animation:none;opacity:1}
+    .js .eq-hours span{opacity:1;transform:none;transition:none}
+  }
+
+  /* problem and distortion columns */
+  .lede{font-size:1.15rem;max-width:56ch}
+  .claim{margin-top:14px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .claim .fig{font-family:var(--mono);font-weight:600;font-size:clamp(1.5rem,3vw,1.9rem);color:var(--blue);line-height:1;white-space:nowrap}
+  .claim .lab{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:16px;color:var(--mut)}
+  .viz-loss .v-loss{transform-box:fill-box;transform-origin:left;animation:vizLoss 7s cubic-bezier(.45,0,.25,1) infinite}
+  @keyframes vizLoss{0%{transform:scaleX(1)}35%{transform:scaleX(.2)}72%{transform:scaleX(.2)}92%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+  .viz-trips .t-call{animation:vizTrip 7s linear infinite}
+  @keyframes vizTrip{0%,20%{opacity:1}40%,75%{opacity:0}92%,100%{opacity:1}}
+  .viz-years .y-add{animation:vizYear 8s linear infinite;animation-delay:calc(var(--i) * .18s)}
+  @keyframes vizYear{0%,10%{opacity:0}30%,80%{opacity:1}95%,100%{opacity:0}}
+
+  /* estimator rows */
+  .eq-rows{margin-top:clamp(18px,3vw,28px);border-top:1px solid var(--line)}
+  .eq-row{display:grid;grid-template-columns:minmax(150px,210px) 1fr auto;gap:6px clamp(14px,3vw,30px);align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
+  .eq-row .k{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink);font-size:1.2rem}
+  .eq-row .m{font-family:var(--mono);font-size:clamp(13px,1.7vw,15.5px);color:var(--body-c);line-height:1.5}
+  .eq-row b{font-family:var(--mono);font-weight:600;font-size:clamp(1.1rem,2.2vw,1.4rem);color:var(--blue);white-space:nowrap}
+  .eq-row.quiet b{color:var(--mut);font-size:1rem}
+  .eq-row.tot{border-bottom:2px solid var(--ink);border-top:2px solid var(--ink);margin-top:-1px}
+  @media (max-width:700px){.eq-row{grid-template-columns:1fr}}
+  .pair .tag-k{font-family:var(--disp);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:15px;color:var(--blue)}
+</style>
+</head>
+<body>
+
+<div class="topline"></div>
+<header>
+  <div class="wrap header-row">
+    <div class="lockup">
+      <img class="lh" src="assets/img/lionheart-logo-color.png" alt="LionHeart Critical Power Services" width="572" height="195">
+      <span class="partner">In partnership with <img src="assets/img/energy-plus-navy.png" alt="Energy+" width="396" height="100"></span>
+    </div>
+    <span class="prepared">Prepared for Horseshoe Indianapolis</span>
+  </div>
+</header>
+
+<!-- 1 : HERO -->
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <p class="addressee rv">For the Horseshoe Indianapolis property team &middot; October 2026</p>
+      <h1 class="rv">A building that never closes has <em>no off-hours</em> to recover the cost of power.</h1>
+      <p class="lead rv">Horseshoe Indianapolis runs 8,760 hours a year, four times the hours of an office, so every overspent kilowatt is paid for around the clock. We cut that cost while the floor, the air, and the power stay exactly as they are.</p>
+    </div>
+    <svg class="dial" viewBox="0 0 400 400" role="img" aria-label="A dial of 24 hours with every hour lit. The building runs all day and all night.">
+      <line class="tk maj" x1="200.0" y1="34.0" x2="200.0" y2="10.0"/>
+      <line class="tk" x1="244.0" y1="35.8" x2="247.1" y2="24.2"/>
+      <line class="tk" x1="285.0" y1="52.8" x2="291.0" y2="42.4"/>
+      <line class="tk" x1="320.2" y1="79.8" x2="328.7" y2="71.3"/>
+      <line class="tk" x1="347.2" y1="115.0" x2="357.6" y2="109.0"/>
+      <line class="tk" x1="364.2" y1="156.0" x2="375.8" y2="152.9"/>
+      <line class="tk maj" x1="366.0" y1="200.0" x2="390.0" y2="200.0"/>
+      <line class="tk" x1="364.2" y1="244.0" x2="375.8" y2="247.1"/>
+      <line class="tk" x1="347.2" y1="285.0" x2="357.6" y2="291.0"/>
+      <line class="tk" x1="320.2" y1="320.2" x2="328.7" y2="328.7"/>
+      <line class="tk" x1="285.0" y1="347.2" x2="291.0" y2="357.6"/>
+      <line class="tk" x1="244.0" y1="364.2" x2="247.1" y2="375.8"/>
+      <line class="tk maj" x1="200.0" y1="366.0" x2="200.0" y2="390.0"/>
+      <line class="tk" x1="156.0" y1="364.2" x2="152.9" y2="375.8"/>
+      <line class="tk" x1="115.0" y1="347.2" x2="109.0" y2="357.6"/>
+      <line class="tk" x1="79.8" y1="320.2" x2="71.3" y2="328.7"/>
+      <line class="tk" x1="52.8" y1="285.0" x2="42.4" y2="291.0"/>
+      <line class="tk" x1="35.8" y1="244.0" x2="24.2" y2="247.1"/>
+      <line class="tk maj" x1="34.0" y1="200.0" x2="10.0" y2="200.0"/>
+      <line class="tk" x1="35.8" y1="156.0" x2="24.2" y2="152.9"/>
+      <line class="tk" x1="52.8" y1="115.0" x2="42.4" y2="109.0"/>
+      <line class="tk" x1="79.8" y1="79.8" x2="71.3" y2="71.3"/>
+      <line class="tk" x1="115.0" y1="52.8" x2="109.0" y2="42.4"/>
+      <line class="tk" x1="156.0" y1="35.8" x2="152.9" y2="24.2"/>
+      <path class="h" style="--i:0" d="M202.6 50.0 A150 150 0 0 1 236.3 54.5"/>
+      <path class="h" style="--i:1" d="M241.3 55.8 A150 150 0 0 1 272.7 68.8"/>
+      <path class="h" style="--i:2" d="M277.3 71.4 A150 150 0 0 1 304.2 92.1"/>
+      <path class="h" style="--i:3" d="M307.9 95.8 A150 150 0 0 1 328.6 122.7"/>
+      <path class="h" style="--i:4" d="M331.2 127.3 A150 150 0 0 1 344.2 158.7"/>
+      <path class="h" style="--i:5" d="M345.5 163.7 A150 150 0 0 1 350.0 197.4"/>
+      <path class="h" style="--i:6" d="M350.0 202.6 A150 150 0 0 1 345.5 236.3"/>
+      <path class="h" style="--i:7" d="M344.2 241.3 A150 150 0 0 1 331.2 272.7"/>
+      <path class="h" style="--i:8" d="M328.6 277.3 A150 150 0 0 1 307.9 304.2"/>
+      <path class="h" style="--i:9" d="M304.2 307.9 A150 150 0 0 1 277.3 328.6"/>
+      <path class="h" style="--i:10" d="M272.7 331.2 A150 150 0 0 1 241.3 344.2"/>
+      <path class="h" style="--i:11" d="M236.3 345.5 A150 150 0 0 1 202.6 350.0"/>
+      <path class="h" style="--i:12" d="M197.4 350.0 A150 150 0 0 1 163.7 345.5"/>
+      <path class="h" style="--i:13" d="M158.7 344.2 A150 150 0 0 1 127.3 331.2"/>
+      <path class="h" style="--i:14" d="M122.7 328.6 A150 150 0 0 1 95.8 307.9"/>
+      <path class="h" style="--i:15" d="M92.1 304.2 A150 150 0 0 1 71.4 277.3"/>
+      <path class="h" style="--i:16" d="M68.8 272.7 A150 150 0 0 1 55.8 241.3"/>
+      <path class="h" style="--i:17" d="M54.5 236.3 A150 150 0 0 1 50.0 202.6"/>
+      <path class="h" style="--i:18" d="M50.0 197.4 A150 150 0 0 1 54.5 163.7"/>
+      <path class="h" style="--i:19" d="M55.8 158.7 A150 150 0 0 1 68.8 127.3"/>
+      <path class="h" style="--i:20" d="M71.4 122.7 A150 150 0 0 1 92.1 95.8"/>
+      <path class="h" style="--i:21" d="M95.8 92.1 A150 150 0 0 1 122.7 71.4"/>
+      <path class="h" style="--i:22" d="M127.3 68.8 A150 150 0 0 1 158.7 55.8"/>
+      <path class="h" style="--i:23" d="M163.7 54.5 A150 150 0 0 1 197.4 50.0"/>
+      <text class="lbl" x="200" y="92" text-anchor="middle">MIDNIGHT</text>
+      <text class="lbl" x="296" y="206" text-anchor="end">6 AM</text>
+      <text class="lbl" x="200" y="322" text-anchor="middle">NOON</text>
+      <text class="lbl" x="104" y="206" text-anchor="start">6 PM</text>
+      <text class="d-big" x="200" y="226" text-anchor="middle"><tspan data-count="24">24</tspan></text>
+      <text class="d-sub" x="200" y="254" text-anchor="middle">HOURS A DAY</text>
+      <g class="d-hand"><circle cx="200" cy="50" r="9"/></g>
+    </svg>
+
+  </div>
+</div>
+
+<!-- 2 : PROBLEM -->
+<section class="alt act">
+  <div class="wrap">
+    <div class="act-label rv"><span class="rule"></span><span>The problem</span></div>
+    <div class="prose">
+      <h2 class="rv">Every overspent kilowatt bills you three times.</h2>
+      <p class="lede rv">An office plant rests two thirds of the year. Yours does not rest at all.</p>
+    </div>
+    <div class="triple">
+      <div class="rv">
+        <span class="chip">1</span>
+        <h3>The meter</h3>
+        <div class="cell-viz" aria-hidden="true"><svg class="viz-meter" viewBox="0 0 120 64">
+          <path d="M20 56 A40 40 0 0 1 100 56" fill="none" stroke="#e6e6e6" stroke-width="6"/>
+          <path d="M60 16 A40 40 0 0 1 100 56" fill="none" stroke="rgba(250,161,27,.7)" stroke-width="6"/>
+          <line class="m-needle" x1="60" y1="56" x2="60" y2="21" stroke="#262626" stroke-width="3"/>
+          <circle cx="60" cy="56" r="4.5" fill="#0f4c91"/>
+        </svg></div>
+        <p>Cooling plants, air handlers, and fans run every hour of the year. Seventeen years in, coils foul and controls drift, and there is no quiet night to claw it back.</p>
+      </div>
+      <div class="rv">
+        <span class="chip">2</span>
+        <h3>The demand charge</h3>
+        <div class="cell-viz" aria-hidden="true"><svg class="viz-bars" viewBox="0 0 120 64">
+          <rect class="b-ghost" x="58" y="12" width="9" height="46"/>
+          <rect x="10" y="42" width="9" height="16"/><rect x="22" y="36" width="9" height="22"/>
+          <rect x="34" y="39" width="9" height="19"/><rect x="46" y="32" width="9" height="26"/>
+          <rect class="b-peak" x="58" y="12" width="9" height="46"/>
+          <rect x="70" y="33" width="9" height="25"/><rect x="82" y="37" width="9" height="21"/>
+          <rect x="94" y="34" width="9" height="24"/><rect x="106" y="41" width="9" height="17"/>
+        </svg></div>
+        <p>One quarter hour sets the demand charge for the whole month. On a casino, the floor, the kitchens, and the cooling plant all peak together on a summer evening.</p>
+      </div>
+      <div class="rv">
+        <span class="chip">3</span>
+        <h3>Equipment life</h3>
+        <div class="cell-viz" aria-hidden="true"><svg class="viz-life" viewBox="0 0 120 64">
+          <rect x="8" y="28" width="60" height="10" fill="rgba(85,85,83,.4)"/>
+          <rect class="l-ext" x="68" y="28" width="42" height="10" fill="#0f4c91"/>
+          <text class="l-txt" x="8" y="57" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="13" letter-spacing="1" fill="#555553">+ ADDED YEARS</text>
+        </svg></div>
+        <p>At 8,760 hours a year, a chiller reaches in about four years the run hours an office unit reaches in about seventeen. Replacement costs more with every cycle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<figure class="band rv" aria-labelledby="cap1">
+  <div class="wrap">
+    <svg viewBox="0 0 1000 230" role="img" aria-label="Two load shapes over 24 hours. An office building's load drops at night. A casino's load stays high all day and night.">
+      <line class="ax" x1="40" y1="190" x2="960" y2="190"/>
+      <text class="axt" x="40" y="214">MIDNIGHT</text><text class="axt" x="272" y="214">6 AM</text><text class="axt" x="500" y="214" text-anchor="middle">NOON</text><text class="axt" x="728" y="214" text-anchor="middle">6 PM</text><text class="axt" x="960" y="214" text-anchor="end">MIDNIGHT</text>
+      <path class="ln-office" pathLength="1" d="M40 170 L200 170 C250 168 270 80 320 74 L660 74 C700 74 720 150 780 168 L960 170"/>
+      <path class="ln-casino" pathLength="1" d="M40 60 C200 52 320 48 500 46 C700 48 820 52 960 58"/>
+      <text class="tag" x="330" y="34" fill="#faa11b">CASINO</text>
+      <text class="tag" x="560" y="108" fill="#ffffff">OFFICE</text>
+    </svg>
+    <figcaption id="cap1">An office rests at night. A casino pays for all twenty four hours.<span class="illus">Illustrative load shapes, not measured data.</span></figcaption>
+  </div>
+</figure>
+
+<!-- 3 : ENERGY DISTORTION -->
+<section class="act">
+  <div class="wrap">
+    <div class="act-label rv"><span class="rule"></span><span>Energy distortion</span></div>
+    <div class="prose">
+      <h2 class="rv">Your floor sends distortion back into the building's power.</h2>
+      <p class="rv">More than 1,500 slot machines, variable speed drives, LED drivers, UPS units, and other electronics push distortion back into the electrical system. It lands in three places.</p>
+    </div>
+    <div class="triple">
+      <div class="rv">
+        <span class="chip">1</span>
+        <h3>The bill</h3>
+        <div class="cell-viz" aria-hidden="true"><svg class="viz-loss" viewBox="0 0 120 64">
+          <rect x="8" y="16" width="104" height="22" fill="#e6e6e6"/>
+          <rect x="8" y="16" width="70" height="22" fill="#0f4c91"/>
+          <rect class="v-loss" x="78" y="16" width="34" height="22" fill="#faa11b"/>
+          <text x="8" y="57" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="13" letter-spacing="1" fill="#555553">NO WORK DONE</text>
+        </svg></div>
+        <p>Distortion is power you pay for that does no work. It becomes losses and heat in the wiring, transformers, and motors.</p>
+      </div>
+      <div class="rv">
+        <span class="chip">2</span>
+        <h3>Maintenance</h3>
+        <div class="cell-viz" aria-hidden="true"><svg class="viz-trips" viewBox="0 0 120 64">
+          <g fill="rgba(85,85,83,.4)">
+            <rect x="10" y="8" width="16" height="20"/><rect x="32" y="8" width="16" height="20"/><rect x="54" y="8" width="16" height="20"/><rect x="76" y="8" width="16" height="20"/><rect x="98" y="8" width="16" height="20"/>
+            <rect x="10" y="36" width="16" height="20"/><rect x="32" y="36" width="16" height="20"/><rect x="54" y="36" width="16" height="20"/><rect x="76" y="36" width="16" height="20"/><rect x="98" y="36" width="16" height="20"/>
+          </g>
+          <g fill="#faa11b">
+            <rect class="t-call" x="32" y="8" width="16" height="20"/><rect class="t-call" x="98" y="8" width="16" height="20"/>
+            <rect class="t-call" x="10" y="36" width="16" height="20"/><rect class="t-call" x="76" y="36" width="16" height="20"/>
+          </g>
+        </svg></div>
+        <p>Nuisance trips, overheated panels and neutrals, failed boards, and extra service calls all trace back to it.</p>
+        <p class="claim"><span class="fig">Up to 40%</span><span class="lab">less maintenance</span></p>
+      </div>
+      <div class="rv">
+        <span class="chip">3</span>
+        <h3>Equipment life</h3>
+        <div class="cell-viz" aria-hidden="true"><svg class="viz-years" viewBox="0 0 120 64">
+          <g fill="rgba(85,85,83,.4)">
+            <rect x="8" y="12" width="5" height="24"/><rect x="15" y="12" width="5" height="24"/><rect x="22" y="12" width="5" height="24"/><rect x="29" y="12" width="5" height="24"/><rect x="36" y="12" width="5" height="24"/>
+            <rect x="43" y="12" width="5" height="24"/><rect x="50" y="12" width="5" height="24"/><rect x="57" y="12" width="5" height="24"/><rect x="64" y="12" width="5" height="24"/><rect x="71" y="12" width="5" height="24"/>
+          </g>
+          <g fill="#0f4c91">
+            <rect class="y-add" style="--i:0" x="78" y="12" width="5" height="24"/><rect class="y-add" style="--i:1" x="85" y="12" width="5" height="24"/><rect class="y-add" style="--i:2" x="92" y="12" width="5" height="24"/><rect class="y-add" style="--i:3" x="99" y="12" width="5" height="24"/><rect class="y-add" style="--i:4" x="106" y="12" width="5" height="24"/>
+          </g>
+          <text x="8" y="57" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="13" letter-spacing="1" fill="#555553">YEARS OF SERVICE</text>
+        </svg></div>
+        <p>Transformers, motors, and electronics run hotter and wear out early.</p>
+        <p class="claim"><span class="fig">5 to 15</span><span class="lab">additional years of equipment life</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 : THE PLAN -->
+<section class="alt act">
+  <div class="wrap">
+    <div class="act-label rv"><span class="rule"></span><span>The plan</span></div>
+    <div class="prose">
+      <h2 class="rv">Cool it. Clean it. Store it.</h2>
+    </div>
+    <div class="levers">
+      <div class="lever rv">
+        <span class="name">Cool</span>
+        <p>We restore and stage the chillers and air handlers, add variable speed drives to fans and pumps, and match the outside air a smoking floor requires to the crowd, without compromising air quality. The air stays as clean as you require. What changes is what it costs to make it so.</p>
+      </div>
+      <div class="lever rv">
+        <span class="name">Clean</span>
+        <p>We correct distortion at the source, on the circuits that create it. Less power is lost as heat, and the panels, transformers, and motors downstream run cooler.</p>
+      </div>
+      <div class="lever rv">
+        <span class="name">Store</span>
+        <p>Battery storage shaves the peaks that set the demand charge. It also stands behind the generators LionHeart already maintains, so the floor stays powered. The project is paid for from savings, and the federal storage tax credit and utility incentives are tailwinds where they apply.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 : THE GUIDE -->
+<section>
+  <div class="wrap">
+    <div class="prose">
+      <h2 class="rv">Two teams, one call.</h2>
+    </div>
+    <div class="triple pair">
+      <div class="rv">
+        <span class="tag-k">The power</span>
+        <h3>LionHeart</h3>
+        <p>LionHeart Critical Power Services has kept critical power running across the Midwest since 1999. Generators, transfer switches, and switchgear for hospitals, data centers, and industrial sites, with 24/7/365 response.</p>
+      </div>
+      <div class="rv">
+        <span class="tag-k">The savings</span>
+        <h3>Energy+</h3>
+        <p>Energy+ engineers the savings. Cooling, distortion correction, and storage are specified for each system and verified under IPMVP, the international measurement and verification protocol.</p>
+      </div>
+    </div>
+    <div class="proof-block rv" style="margin-top:clamp(28px,4vw,40px)">
+      <h3>The precedent</h3>
+      <p class="prose">The technologies we deploy have been measured at more than 200 named sites. Simon Property Group measured a 21.1 percent HVAC energy reduction with a roughly twelve month payback, Anheuser-Busch 19.2 percent, and DHL 15 percent. In hospitality, distortion correction measured an 8.59 percent peak kilowatt reduction at a Las Vegas hotel and casino under independent panel metering. These are technology results at the sites named.</p>
+      <div class="ledger" id="ledger" aria-hidden="true">
+        <div class="ledger__col" style="--dur:210s"></div>
+        <div class="ledger__col" style="--dur:260s"></div>
+        <div class="ledger__col" style="--dur:180s"></div>
+      </div>
+      <p class="quiet">The ledger above is a live sample. Hover to hold it still. <button type="button" class="textlink" id="record-open" aria-haspopup="dialog">Read the sample record</button></p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 : SAVINGS -->
+<section class="alt">
+  <div class="wrap">
+    <div class="prose">
+      <h2 class="rv">Planned at the floor of every range.</h2>
+      <p class="rv">We have not seen a bill, so we estimated one from public benchmarks and planned at the bottom of every range. Move the sliders to see how the floor changes.</p>
+    </div>
+    <div class="equation rv" id="equation">
+      <p class="eq-intro">What the floor of the range returns</p>
+      <div class="eq-controls">
+        <div class="eq-ctl">
+          <label for="eqBill">Annual electric bill: <strong id="eqBillVal">$2.6M</strong></label>
+          <input type="range" id="eqBill" min="2.6" max="5.2" step="0.1" value="2.6" aria-label="Estimated annual electric bill, millions of dollars">
+          <div class="eq-ends" aria-hidden="true"><span>Floor estimate</span><span>High estimate</span></div>
+        </div>
+        <div class="eq-ctl">
+          <label for="eqPct">HVAC and cooling recovered: <strong id="eqPctVal">10%</strong></label>
+          <input type="range" id="eqPct" min="10" max="20" step="1" value="10" aria-label="Share of HVAC and cooling cost recovered, percent">
+          <div class="eq-ends" aria-hidden="true"><span>Planning floor</span><span>Upper figure</span></div>
+        </div>
+      </div>
+      <div class="eq-rows" aria-live="polite">
+        <div class="eq-row">
+          <span class="k">Cooling</span>
+          <span class="m">HVAC and cooling is 40% of the bill, <span id="mHvac">$1,040,000</span>. Recovered at <span id="mPct">10</span>%.</span>
+          <b id="mHvacSave">$104,000</b>
+        </div>
+        <div class="eq-row quiet">
+          <span class="k">Power quality</span>
+          <span class="m">Lower losses, maintenance, and equipment wear. Real, and not counted in the floor.</span>
+          <b>Not counted</b>
+        </div>
+        <div class="eq-row">
+          <span class="k">Peak shaving / storage</span>
+          <span class="m">Peak cut <span id="mShave">5</span>%: <span id="mKw">185</span> kW &times; $22.57 &times; 12 months.</span>
+          <b id="mDem">$50,100</b>
+        </div>
+        <div class="eq-row tot">
+          <span class="k">The floor</span>
+          <span class="m">About <span id="mShare">5.9</span>% of the whole bill, every year.</span>
+          <b id="mTot">$154,100</b>
+        </div>
+      </div>
+      <div class="eq-visual">
+        <div class="eq-hours" id="eqHours" aria-hidden="true"></div>
+        <div class="eq-val">
+          <span class="eq-big">$<span id="eqHour">17.59</span></span>
+          <span class="eq-label">back every hour of every day, because the building never closes. That is <b id="eqDay">$422</b> a day.</span>
+        </div>
+      </div>
+      <p class="eq-fine">An illustration built on benchmarks, not a projection. We have not seen a bill. The annual bill range comes from an assumed 100 to 200 kWh per square foot across 233,000 square feet; HVAC and cooling is assumed at 40 percent of the bill; peak demand scales with the bill from 3,700 to 7,300 kW; the rate stand-in is $22.57 per kW per month and 7.0 cents per kWh. Your bills replace every one of these in the first thirty days.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 : THREE STEPS -->
+<section>
+  <div class="wrap">
+    <div class="prose">
+      <h2 class="rv">Three steps to your findings.</h2>
+    </div>
+    <div class="steps">
+      <div class="step rv">
+        <span class="chip">1</span>
+        <div>
+          <h3>Send 12 months of bills and a letter of authorization</h3>
+          <p>Electric bills, interval data if you have it, and a signed letter of authorization for usage history. No site visit is required to start.</p>
+        </div>
+      </div>
+      <div class="step rv">
+        <span class="chip">2</span>
+        <div>
+          <h3>Walk the plant with LionHeart's technicians</h3>
+          <p>One day with your facilities team on the chillers, air handlers, electrical room, and generators, scheduled around the floor.</p>
+        </div>
+      </div>
+      <div class="step rv">
+        <span class="chip">3</span>
+        <div>
+          <h3>Findings in 30 days</h3>
+          <p>A breakdown by system of where the money is going, which measures apply, and the savings planned at the floor. Then you decide.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 : GUARANTEE -->
+    <div class="guarantee rv">
+      <h2>If we can't prove the savings, nothing is installed and you owe nothing.</h2>
+    </div>
+  </div>
+</section>
+
+<div class="cta" id="contact">
+  <div class="wrap">
+    <span class="bar rv" aria-hidden="true"></span>
+    <h2 class="rv">One call reaches both teams.</h2>
+    <p class="tagline rv">Power Assured&reg;</p>
+    <p class="expl rv">LionHeart keeps the power on. Energy+ engineers the savings. Start with Mark.</p>
+    <div class="contact rv">
+      <a class="btn btn-solid" data-contact-tel href="#contact">Call Mark Schmaltz</a>
+      <a class="btn btn-ghost" data-contact-mail href="mailto:Mark.Schmaltz@LHCPS.com">Mark.Schmaltz@LHCPS.com</a>
+    </div>
+    <p class="who rv">Mark Schmaltz &middot; Account Executive &middot; LionHeart Critical Power Services<span data-contact-phone-wrap><noscript> &middot; (888) 888-8888</noscript></span></p>
+    <div class="logos rv">
+      <img class="lh" src="assets/img/lionheart-logo-white.png" alt="LionHeart Critical Power Services" width="572" height="195">
+      <span class="sep">in partnership with</span>
+      <img class="ep" src="assets/img/energy-plus-white.png" alt="Energy+" width="396" height="100">
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="fine">Technology results shown are results achieved by the technologies we deploy at the sites named or documented in the studies cited, under their own conditions; they are not predictions for any specific property. Regional programs aggregate hundreds of additional sites into the 200 plus total. Savings figures in the technology record are stated as a share of the HVAC and cooling portion of a facility bill, not the whole bill. The estimates on this page are built from public benchmarks because no utility bills have been provided: an assumed 100 to 200 kWh per square foot per year across 233,000 square feet, a 72 percent load factor, a stand-in 2026 Indiana large commercial tariff of $22.57 per kW per month in demand charges and 7.0 cents per kWh, HVAC and cooling at 40 percent of the bill, and a 5 to 10 percent peak reduction. The 40 percent share is a published industry estimate that we have not independently verified. They are illustrations, not projections, and are replaced by your bills and interval data. Power quality benefits, including the maintenance and equipment life ranges, are stated as up to figures, are not counted in the savings floor, and are confirmed at your site. Tax credit availability is as of October 2026; confirm with tax counsel.</p>
+    <p class="fine">Sources: building size, opening, and slot count from Wikipedia and GGB News; ventilation guidance from ASHRAE 62.1 and industry casino design guidance; LionHeart service descriptions from lionheartpower.com.</p>
+    <p class="fine">Prepared by LionHeart Critical Power Services in partnership with Energy+. Private and confidential, prepared for Horseshoe Indianapolis.</p>
+  </div>
+</footer>
+
+<dialog class="sheet" id="record-sheet" aria-labelledby="record-title">
+  <div class="sheet__bar">
+    <h2 id="record-title">The sample record</h2>
+    <button type="button" class="sheet__close" id="record-close" aria-label="Close the sample record">&times;</button>
+  </div>
+  <div class="sheet__body" id="record-body">
+    <noscript><p>The record requires JavaScript. Documentation is available on request.</p></noscript>
+  </div>
+  <p class="sheet__note">Every result was measured at the named site under its own conditions; it is not a prediction for your property. Regional programs aggregate hundreds of additional sites into the 200 plus total. Documentation for the full record of 95 documented examples is available on request.</p>
+</dialog>
+
+<script>
+  document.documentElement.classList.add('js');
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i%6,4)*60)+'ms';io.observe(el)});
+
+  /* contact: one constant, read everywhere */
+  (function(){
+    const digits=CONTACT.phone.replace(/\D/g,'');
+    const tel=document.querySelector('[data-contact-tel]');
+    if(tel){tel.href='tel:+'+(digits.length===10?'1':'')+digits;tel.setAttribute('aria-label','Call '+CONTACT.name+' at '+CONTACT.phone)}
+    const mail=document.querySelector('[data-contact-mail]');
+    if(mail){mail.href='mailto:'+CONTACT.email;mail.textContent=CONTACT.email}
+    const wrap=document.querySelector('[data-contact-phone-wrap]');
+    if(wrap)wrap.textContent=' · '+CONTACT.phone;
+  })();
+
+  /* the interactive savings estimator */
+  (function(){
+    const hours=document.getElementById('eqHours');
+    if(!hours)return;
+    const bill=document.getElementById('eqBill'),pct=document.getElementById('eqPct');
+    const $=id=>document.getElementById(id);
+    const RATE=22.57,HVAC_SHARE=0.4;
+    const fmt=n=>n.toLocaleString('en-US');
+    const r100=n=>Math.round(n/100)*100;
+    hours.innerHTML=Array.from({length:24},()=>'<span></span>').join('');
+    hours.querySelectorAll('span').forEach((s,i)=>s.style.transitionDelay=(i*35)+'ms');
+    const render=()=>{
+      const b=parseFloat(bill.value),p=parseInt(pct.value,10);
+      const billD=b*1e6;
+      const hvac=billD*HVAC_SHARE,hvacSave=r100(hvac*p/100);
+      const peak=3700+(b-2.6)/2.6*3600;
+      const shave=p/2,kw=Math.round(peak*shave/100);
+      const dem=r100(kw*RATE*12);
+      const tot=hvacSave+dem;
+      $('eqBillVal').textContent='$'+b.toFixed(1)+'M';
+      $('eqPctVal').textContent=p+'%';
+      $('mHvac').textContent='$'+fmt(Math.round(hvac/1000)*1000);
+      $('mPct').textContent=p;
+      $('mHvacSave').textContent='$'+fmt(hvacSave);
+      $('mShave').textContent=shave;
+      $('mKw').textContent=fmt(kw);
+      $('mDem').textContent='$'+fmt(dem);
+      $('mTot').textContent='$'+fmt(tot);
+      $('mShare').textContent=(tot/billD*100).toFixed(1);
+      $('eqHour').textContent=(tot/8760).toFixed(2);
+      $('eqDay').textContent='$'+fmt(Math.round(tot/365));
+    };
+    render();
+    bill.addEventListener('input',render);pct.addEventListener('input',render);
+    const eq=$('equation');
+    if(eq&&!eq.classList.contains('in')){
+      new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){eq.classList.add('in');o.disconnect()}},{threshold:.2}).observe(eq);
+    }
+  })();
+
+  /* numbers settle into place on reveal */
+  if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
+    const cio=new IntersectionObserver(es=>{es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      cio.unobserve(e.target);
+      const el=e.target,to=parseFloat(el.dataset.count),t0=performance.now(),dur=1100;
+      const step=t=>{
+        const p=Math.min(1,(t-t0)/dur),ease=1-Math.pow(1-p,4);
+        el.textContent=Math.round(to*ease);
+        if(p<1)requestAnimationFrame(step);else el.textContent=el.dataset.count;
+      };
+      requestAnimationFrame(step);
+    })},{threshold:.6});
+    document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+  }
+
+
+  const RECORD=[
+    { t:"Whole building examples", rows:[
+      ["49.2%","AZ Ford Dealership","Auto dealership · Arizona","Documented project total (power quality + HVAC + lighting)"],
+      ["27% avg","City of Rainsville","Municipal · Alabama","First-year monitored, power conditioning + LED"],
+      ["+50% / +2%","Commercial Bottling Plant","Manufacturing · Upper Midwest","Growth-adjusted net cost study (50% more output, 2% more cost)"]
+    ]},
+    { t:"HVAC examples", rows:[
+      ["33%","Durham College","Education / research · Oshawa, ON","16,851 data points; ANOVA / t-test"],
+      ["27.75% avg","City of Windsor","Municipal · Windsor, ON","Utility verified; provincial program approved"],
+      ["21.1% kWh","Simon Property Group","Retail, Jersey Gardens mall · Elizabeth, NJ","IPMVP; $41,473/yr, 12-mo payback"],
+      ["19.2% RTU","Anheuser-Busch (Mitchell Distributing)","Distribution · United States","20-mo payback; 904% lifetime ROI"],
+      ["20 to 35%","Trebor International","Manufacturing · Windsor, ON","P.E. licensed in 6 jurisdictions"],
+      ["284% ROI","Men's Wearhouse (Tailored Brands)","Retail · United States","Dual-RTU, 12.5-mo payback"],
+      ["24%+ / yr","McDonald's franchisee","Quick-serve · United States","Annual study"],
+      ["20% avg","AT&T Mobility / SDG&E","Telecom, 9 cell sites · San Diego, CA","Data loggers; utility-engineer co-authored"],
+      ["19.5 to 21.6%","Verizon Network Services","Telecom · Dallas, TX","P.E.-authored; approved for deployment"],
+      ["22%","Bashas' Supermarket","Grocery · Gold Canyon, AZ","Grocery vertical study"],
+      ["19.4% / yr","Domino's Store 6711","Quick-serve · United States","2-year study"],
+      ["12 to 27%","UAE program","14 institutions incl. Sheraton Jumeirah, Flora Grand","14-institution deployment"],
+      ["15 to 39%","Multi-country program","South Africa · Pakistan · Indonesia · Puerto Rico","Field studies per country"],
+      ["15 to 21%","Bangladesh enterprise","56 units · GraphicPeople (WPP) · BEXIMCO · IDLC Finance","Enterprise deployment"],
+      ["15% eff.","DHL (ammonia refrigeration)","Logistics · United States","Compressor study, 13.8-mo payback"],
+      ["200 sites","Airtel Bangladesh","Telecom, 200 BTS sites · Nationwide","3-month pilot, no performance issues"],
+      ["5-mo payback","Italgas Toscana","Utility, heat pump · Italy","Field efficiency trial"]
+    ]},
+    { t:"Distortion correction examples", rows:[
+      ["24.0%","Edward Hospital","Hospital · Naperville, IL","Power factor + voltage conditioning + line reactors; metered, $84,270 / 9 mo"],
+      ["14% kWh","Caribe Resort","Hospitality · Orange Beach, AL","Facilities-director measured"],
+      ["13.5% kWh","Hilton Garden Inn","Hospitality · Marietta, GA","12-month study"],
+      ["8.59% kW","Las Vegas Hotel & Casino","Hospitality · Las Vegas, NV","Independent panel metering"],
+      ["15% kWh","Henkel","Manufacturing · Richmond, VA","Exceeded corporate sustainability goal"],
+      ["15.0% kWh","Buffalo Rock","Manufacturing · Birmingham, AL","12-month study"],
+      ["12.9% kWh","Hi-Noon (Sinclair)","C-store / fuel · Missoula, MT","Verified by the serving utility"],
+      ["13.0% kWh","Planet Fitness","Fitness · Birmingham, AL","Third-party study"],
+      ["~1 yr payback","Pacific Steel","Manufacturing · Montana","PE-sealed technoeconomic analysis"],
+      ["40% motor","Sequoyah Elementary","Education · Tennessee","Data-logged 14 days, 9.5-mo ROI"]
+    ]}
+  ];
+  (function(){
+    const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    const ledger=document.getElementById('ledger');
+    if(ledger){
+      const flat=[];RECORD.forEach(g=>g.rows.forEach(r=>flat.push(r)));
+      const cols=Array.from(ledger.querySelectorAll('.ledger__col'));
+      const card=r=>'<div class="ledger__card"><span class="r">'+esc(r[0])+'</span><span class="n">'+esc(r[1])+'</span><span class="w">'+esc(r[2])+'</span></div>';
+      cols.forEach((col,i)=>{const rows=flat.filter((_,j)=>j%cols.length===i);const html=rows.map(card).join('');col.innerHTML=html+html;});
+      ledger.addEventListener('click',()=>{const b=document.getElementById('record-open');if(b)b.click();});
+    }
+    const sheet=document.getElementById('record-sheet'),openBtn=document.getElementById('record-open'),closeBtn=document.getElementById('record-close');
+    if(sheet&&openBtn){
+      let rendered=false;
+      const render=()=>{
+        if(rendered)return;rendered=true;
+        document.getElementById('record-body').innerHTML=RECORD.map(g=>'<section class="rec-group"><h3>'+esc(g.t)+'</h3><ul>'+g.rows.map(r=>'<li><span class="r">'+esc(r[0])+'</span><span class="n"><b>'+esc(r[1])+'</b><span>'+esc(r[2])+'</span></span><span class="b">'+esc(r[3])+'</span></li>').join('')+'</ul></section>').join('');
+      };
+      openBtn.addEventListener('click',()=>{render();sheet.showModal();});
+      if(closeBtn)closeBtn.addEventListener('click',()=>sheet.close());
+      sheet.addEventListener('click',e=>{if(e.target===sheet)sheet.close();});
+    }
+  })();
+</script>
+</body>
+</html>
