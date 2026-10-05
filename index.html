@@ -346,7 +346,10 @@
   .tcard:hover{background:#fbfcfe}
   .tcard:hover::before{transform:scaleX(1)}
   .tcard__mark{aspect-ratio:5/2;display:flex;align-items:center;justify-content:center;background:var(--bg-alt);border-bottom:1px solid var(--line);padding:clamp(18px,3vw,30px)}
-  .tcard__mark img{max-height:64px;max-width:70%;width:auto;height:auto;display:block}
+  .tcard__mark img{width:auto;display:block;max-width:85%}
+  .tcard__mark img.lh{height:80px}
+  .tcard__mark img.ep{height:18px}
+  @media (max-width:640px){.tcard__mark img.lh{height:64px}.tcard__mark img.ep{height:14.4px}}
   .tcard__body{padding:clamp(22px,3.5vw,32px);flex:1}
   .tcard h3{font-size:1.5rem;line-height:1.15;margin:6px 0 10px;letter-spacing:.03em}
   .tcard p{font-size:1.05rem;line-height:1.6;color:var(--body-c)}
@@ -892,7 +895,7 @@
     <div class="tick-rule" aria-hidden="true"></div>
     <div class="teams">
       <div class="tcard rv">
-        <div class="tcard__mark"><img src="assets/img/lionheart-logo-color.png" alt="LionHeart Critical Power Services" width="572" height="195"></div>
+        <div class="tcard__mark"><img class="lh" src="assets/img/lionheart-logo-color.png" alt="LionHeart Critical Power Services" width="572" height="195"></div>
         <div class="tcard__body">
           <span class="tag-k">The power</span>
           <h3>LionHeart</h3>
@@ -900,7 +903,7 @@
         </div>
       </div>
       <div class="tcard rv">
-        <div class="tcard__mark"><img src="assets/img/energy-plus-navy.png" alt="Energy+" width="396" height="100"></div>
+        <div class="tcard__mark"><img class="ep" src="assets/img/energy-plus-navy.png" alt="Energy+" width="396" height="100"></div>
         <div class="tcard__body">
           <span class="tag-k">The savings</span>
           <h3>Energy+</h3>
